@@ -1,0 +1,487 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "contact": "تواصل معنا",
+    "about": "من نحن",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "signup": "إنشاء حساب",
+    "searchPlaceholder": "عما تبحث؟",
+    "wishlist": "قائمة الأمنيات",
+    "cart": "عربة التسوق",
+    "selectLanguage": "اختر اللغة",
+    "brand": "دكان",
+    "loginRequired": "يجب تسجيل الدخول للوصول إلى قائمة الأمنيات"
+  },
+  "topHeader": {
+    "promo": "تخفيضات الصيف على جميع ملابس السباحة وتوصيل سريع مجاني - خصم 50%!",
+    "promoMobile": "تخفيضات الصيف - خصم 50%!",
+    "shopNow": "تسوق الآن"
+  },
+  "home": {
+    "heroSlides": {
+      "iphone": {
+        "brand": "سلسلة آيفون 14",
+        "title": "خصم يصل إلى 10%\nعند استخدام القسيمة",
+        "cta": "تسوق الآن"
+      },
+      "ps5": {
+        "brand": "بلاي ستيشن 5",
+        "title": "جهاز الألعاب\nالأقوى على الإطلاق",
+        "cta": "تسوق الآن"
+      },
+      "camera": {
+        "brand": "كانون EOS R5",
+        "title": "تصوير فوتوغرافي\nبجودة احترافية",
+        "cta": "تسوق الآن"
+      },
+      "laptop": {
+        "brand": "أسوس ROG Zephyrus",
+        "title": "لابتوبات الألعاب\nمن الجيل القادم",
+        "cta": "تسوق الآن"
+      },
+      "fashion": {
+        "brand": "أزياء دكان",
+        "title": "أناقة عصرية\nوراحة تامة",
+        "cta": "تسوق الآن"
+      }
+    },
+    "categories": "الفئات",
+    "browseAllCategories": "تصفح جميع الفئات",
+    "newArrival": "وصل حديثاً",
+    "featured": "مميز",
+    "shopNow": "تسوق الآن",
+    "collection": "مجموعة",
+    "promo": {
+      "label": "عرض خاص",
+      "title": "عزز تجربتك\nمع أفضل المنتجات",
+      "buyNow": "اشتري الآن!",
+      "days": "أيام",
+      "hours": "ساعات",
+      "minutes": "دقائق",
+      "seconds": "ثواني"
+    },
+    "sidebar": {
+      "womensDresses": "فساتين نسائية",
+      "mensShirts": "قمصان رجالية",
+      "smartphones": "هواتف ذكية",
+      "furniture": "أثاث",
+      "beauty": "جمال",
+      "sportsAccessories": "إكسسوارات رياضية",
+      "vehicle": "مركبات",
+      "groceries": "بقالة",
+      "skinCare": "العناية بالبشرة",
+      "laptops": "أجهزة لابتوب",
+      "fragrances": "عطور",
+      "homeDecoration": "ديكور المنزل",
+      "kitchenAccessories": "إكسسوارات المطبخ",
+      "tablets": "أجهزة تابلت",
+      "smartWatches": "ساعات ذكية",
+      "mobileAccessories": "إكسسوارات الجوال",
+      "tops": "ملابس علوية",
+      "mensShoes": "أحذية رجالية",
+      "womensShoes": "أحذية نسائية",
+      "womensBags": "حقائب نسائية",
+      "womensJewellery": "مجوهرات نسائية",
+      "sunglasses": "نظارات شمسية",
+      "lighting": "إضاءة",
+      "motorcycle": "دراجات نارية",
+      "gaming": "ألعاب",
+      "headphones": "سماعات"
+    },
+    "flashSales": {
+      "title": "عروض خاطفة",
+      "label": "اليوم",
+      "viewAll": "عرض جميع المنتجات"
+    },
+    "bestSelling": {
+      "title": "المنتجات الأكثر مبيعاً",
+      "label": "هذا الشهر",
+      "viewAll": "عرض الكل"
+    },
+    "explore": {
+      "title": "استكشف منتجاتنا",
+      "label": "منتجاتنا",
+      "viewAll": "عرض جميع المنتجات"
+    },
+    "browseByCategory": {
+      "title": "تصفح حسب الفئة",
+      "label": "الفئات",
+      "viewAll": "عرض جميع الفئات"
+    },
+    "features": {
+      "delivery": {
+        "title": "توصيل مجاني وسريع",
+        "desc": "توصيل مجاني لجميع الطلبات التي تزيد عن 140 دولاراً"
+      },
+      "service": {
+        "title": "خدمة عملاء 24/7",
+        "desc": "دعم فني ودود على مدار الساعة"
+      },
+      "guarantee": {
+        "title": "ضمان استعادة الأموال",
+        "desc": "نعيد الأموال في غضون 30 يوماً"
+      }
+    }
+  },
+  "products": {
+    "allProducts": "جميع المنتجات",
+    "category": {
+      "title": "الفئة",
+      "noProducts": "لا توجد منتجات في هذه الفئة.",
+      "loadError": "فشل تحميل منتجات هذه الفئة."
+    },
+    "addToCart": "أضف إلى السلة",
+    "addedToCart": "تمت الإضافة إلى السلة",
+    "removedFromCart": "تمت الإزالة من السلة",
+    "addedToWishlist": "تمت الإضافة إلى قائمة الأمنيات",
+    "removedFromWishlist": "تمت الإزالة من قائمة الأمنيات",
+    "viewCart": "عرض السلة",
+    "checkCart": "تحقق من سلتك لإتمام الشراء",
+    "quickView": "عرض سريع",
+    "details": {
+      "availability": "التوفر:",
+      "inStock": "متوفر",
+      "outOfStock": "غير متوفر",
+      "category": "الفئة:",
+      "reviews_one": "(تقييم واحد)",
+      "reviews_other": "({{count}} تقييم)",
+      "relatedItems": "منتجات ذات صلة",
+      "colours": "الألوان",
+      "colors": {
+        "blue": "أزرق",
+        "red": "أحمر"
+      },
+      "size": "المقاس",
+      "sizes": {
+        "xs": "XS",
+        "s": "S",
+        "m": "M",
+        "l": "L",
+        "xl": "XL"
+      },
+      "buyNow": "اشتري الآن",
+      "delivery": {
+        "title": "توصيل مجاني",
+        "hint": "أدخل الرمز البريدي لمعرفة توفر التوصيل"
+      },
+      "return": {
+        "title": "سياسة الإرجاع",
+        "desc": "إرجاع مجاني خلال 30 يوماً. ",
+        "details": "التفاصيل"
+      }
+    },
+    "status": {
+      "new": "جديد",
+      "sale": "خصم"
+    },
+    "errors": {
+      "404": {
+        "title": "404 غير موجود",
+        "message": "الصفحة التي تبحث عنها غير موجودة. يمكنك العودة للصفحة الرئيسية.",
+        "backToHome": "العودة للصفحة الرئيسية",
+        "breadcrumb": "خطأ 404"
+      },
+      "notFound": "المنتج غير موجود",
+      "loadFailed": "فشل تحميل تفاصيل المنتج.",
+      "noProductsInCategory": "لا توجد منتجات في هذه الفئة."
+    },
+    "breadcrumb": {
+      "home": "الرئيسية",
+      "products": "المنتجات"
+    },
+    "search": {
+      "title": "بحث: {{query}}",
+      "resultsTitle": "نتائج البحث",
+      "showingResults": "عرض النتائج لـ \"{{query}}\"",
+      "itemsFound_one": "تم العثور على منتج واحد",
+      "itemsFound_other": "تم العثور على {{count}} منتجات",
+      "loading": "جاري البحث عن المنتجات...",
+      "noResults": "لم يتم العثور على نتائج",
+      "noResultsDesc": "لم نتمكن من العثور على أي منتجات تطابق بحثك. حاول استخدام كلمات بحث مختلفة."
+    },
+    "specifications": {
+      "title": "المواصفات",
+      "sku": "رمز المنتج",
+      "weight": "الوزن",
+      "dimensions": "الأبعاد",
+      "width": "العرض",
+      "height": "الطول",
+      "depth": "العمق",
+      "warranty": "الضمان",
+      "shipping": "معلومات الشحن",
+      "returnPolicy": "سياسة الإرجاع",
+      "minOrder": "أقل كمية للطلب"
+    }
+  },
+  "footer": {
+    "subscribe": "اشتراك",
+    "getOff": "احصل على خصم 10% على طلبك الأول",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "support": "الدعم",
+    "address": "111 بيجوي ساراني، دكا، DH 1515، بنغلاديش.",
+    "account": "الحساب",
+    "myAccount": "حسابي",
+    "loginRegister": "تسجيل الدخول / التسجيل",
+    "cart": "عربة التسوق",
+    "wishlist": "قائمة الأمنيات",
+    "shop": "المتجر",
+    "quickLink": "رابط سريع",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfUse": "شروط الاستخدام",
+    "faq": "الأسئلة الشائعة",
+    "contact": "تواصل معنا",
+    "downloadApp": "تحميل التطبيق",
+    "saveApp": "وفر 3$ مع مستخدم التطبيق الجديد فقط",
+    "copyright": "حقوق الطبع والنشر دكان 2025. جميع الحقوق محفوظة"
+  },
+  "auth": {
+    "login": {
+      "title": "تسجيل الدخول إلى دكان",
+      "subtitle": "أدخل بياناتك أدناه",
+      "emailPlaceholder": "البريد الإلكتروني أو رقم الهاتف",
+      "passwordPlaceholder": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "submitting": "جاري تسجيل الدخول...",
+      "forgetPassword": "هل نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "signup": "إنشاء حساب",
+      "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة"
+    },
+    "signup": {
+      "title": "إنشاء حساب",
+      "subtitle": "أدخل بياناتك أدناه",
+      "namePlaceholder": "الاسم",
+      "emailPlaceholder": "البريد الإلكتروني أو رقم الهاتف",
+      "passwordPlaceholder": "كلمة المرور",
+      "submit": "إنشاء حساب",
+      "submitting": "جاري إنشاء الحساب...",
+      "withGoogle": "التسجيل عبر جوجل",
+      "googleSoon": "التسجيل عبر جوجل سيكون متاحاً قريباً!",
+      "hasAccount": "لديك حساب بالفعل؟",
+      "login": "تسجيل الدخول"
+    },
+    "forgotPassword": {
+      "title": "نسيت كلمة المرور",
+      "subtitle": "أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين",
+      "emailPlaceholder": "البريد الإلكتروني",
+      "submit": "إرسال رابط إعادة التعيين",
+      "submitting": "جاري الإرسال...",
+      "backToLogin": "العودة لتسجيل الدخول",
+      "success": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني!",
+      "emailError": "يرجى إدخال عنوان بريد إلكتروني صالح"
+    }
+  },
+  "about": {
+    "story": {
+      "title": "قصتنا",
+      "p1": "تم إطلاق دكان في عام 2015، وهي منصة التسوق عبر الإنترنت الرائدة في جنوب آسيا مع تواجد نشط في بنغلاديش. وبدعم من مجموعة واسعة من حلول التسويق والبيانات والخدمات المصممة خصيصاً، تضم دكان 10,500 بائع و300 علامة تجارية وتخدم 3 ملايين عميل في جميع أنحاء المنطقة.",
+      "p2": "تقدم دكان أكثر من مليون منتج، وتنمو بسرعة كبيرة. تقدم دكان تشكيلة متنوعة في فئات تتراوح من المستهلك."
+    },
+    "stats": {
+      "sellers": "بائع نشط في موقعنا",
+      "sales": "مبيعات المنتجات الشهرية",
+      "customers": "عميل نشط في موقعنا",
+      "gross": "إجمالي المبيعات السنوية في موقعنا"
+    },
+    "team": {
+      "founder": "المؤسس ورئيس مجلس الإدارة",
+      "director": "العضو المنتدب",
+      "designer": "مصمم منتجات",
+      "members": {
+        "member1": "أمير علي",
+        "member2": "أحمد حسن",
+        "member3": "عمر فهمي"
+      }
+    }
+  },
+  "contact": {
+    "callToUs": {
+      "title": "اتصل بنا",
+      "desc": "نحن متاحون 24/7، 7 أيام في الأسبوع.",
+      "phone": "الهاتف: +8801611112222"
+    },
+    "writeToUs": {
+      "title": "اكتب لنا",
+      "desc": "املأ النموذج وسنتصل بك في غضون 24 ساعة.",
+      "emails": "البريد الإلكتروني: customer@dokan.com\nالبريد الإلكتروني: support@dokan.com"
+    },
+    "form": {
+      "name": "اسمك",
+      "email": "بريدك الإلكتروني",
+      "phone": "رقم هاتفك",
+      "message": "رسالتك",
+      "submit": "إرسال الرسالة",
+      "submitting": "جاري الإرسال...",
+      "success": "تم إرسال الرسالة بنجاح! سنتصل بك قريباً."
+    }
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "سلة التسوق فارغة.",
+    "return": "العودة للتسوق",
+    "table": {
+      "product": "المنتج",
+      "price": "السعر",
+      "quantity": "الكمية",
+      "subtotal": "المجموع الفرعي"
+    },
+    "total": {
+      "title": "إجمالي السلة",
+      "subtotal": "المجموع الفرعي:",
+      "shipping": "الشحن:",
+      "free": "مجاني",
+      "total": "الإجمالي:",
+      "discount": "خصم (10%):",
+      "checkout": "الإنتقال للدفع",
+      "loginToCheckout": "تسجيل الدخول للمتابعة"
+    },
+    "coupon": {
+      "placeholder": "رمز القسيمة",
+      "apply": "تطبيق القسيمة",
+      "remove": "إزالة",
+      "invalid": "رمز القسيمة غير صالح",
+      "success": "تم تطبيق القسيمة بنجاح!",
+      "alreadyApplied": "تم تطبيق القسيمة بالفعل",
+      "hint": "تلميح: استخدم ",
+      "forDiscount": " للحصول على خصم 10%!"
+    },
+    "clear": "مسح السلة",
+    "clearSuccess": "تم مسح السلة بنجاح!"
+  },
+  "checkout": {
+    "title": "إتمام الشراء",
+    "billingDetails": "تفاصيل الفاتورة",
+    "firstName": "الاسم الأول",
+    "companyName": "اسم الشركة (اختياري)",
+    "streetAddress": "عنوان الشارع",
+    "apartment": "شقة، طابق، إلخ. (اختياري)",
+    "city": "المدينة",
+    "phoneNumber": "رقم الهاتف",
+    "email": "عنوان البريد الإلكتروني",
+    "saveInfo": "حفظ هذه المعلومات لتسجيل الخروج بشكل أسرع في المرة القادمة",
+    "placeOrder": "إتمام الطلب",
+    "processing": "جاري المعالجة...",
+    "bankTransfer": "تحويل بنكي",
+    "cashOnDelivery": "الدفع عند الاستلام",
+    "paymentSuccess": "تم الدفع بنجاح! تم تسجيل الطلب.",
+    "failedOrder": "فشل في تسجيل الطلب. يرجى المحاولة مرة أخرى.",
+    "verifyingPayment": "جاري التحقق من تفاصيل الدفع...",
+    "processingSecurely": "جاري معالجة الدفع بأمان...",
+    "errors": {
+      "firstName": "الاسم الأول مطلوب",
+      "streetAddress": "عنوان الشارع مطلوب",
+      "city": "المدينة مطلوبة",
+      "phoneNumber": "رقم الهاتف مطلوب",
+      "email": "بريد إلكتروني صالح مطلوب",
+      "emptyCart": "سلة التسوق فارغة"
+    }
+  },
+  "orderSuccess": {
+    "title": "تم تسجيل الطلب بنجاح!",
+    "message": "شكراً لك على شرائك. لقد استلمنا طلبك وجاري معالجته.",
+    "orderId": "رقم الطلب",
+    "date": "التاريخ",
+    "status": "الحالة",
+    "paymentMethod": "طريقة الدفع",
+    "total": "الإجمالي",
+    "viewOrders": "عرض طلباتي",
+    "continueShopping": "مواصلة التسوق",
+    "itemsOrdered_one": "منتج واحد تم طلبه",
+    "itemsOrdered_other": "{{count}} منتجات تم طلبها",
+    "moreItems": "+{{count}} منتجات أخرى"
+  },
+  "account": {
+    "welcome": "أهلاً بك!",
+    "sidebar": {
+      "manageAccount": "إدارة حسابي",
+      "myProfile": "ملفي الشخصي",
+      "addressBook": "دفتر العناوين",
+      "paymentOptions": "خيارات الدفع الخاصة بي",
+      "myOrders": "طلباتي",
+      "myReturns": "إرجاعاتي",
+      "myCancellations": "إلغاءاتي",
+      "myWishlist": "قائمة رغباتي",
+      "myReviews": "تقييماتي"
+    },
+    "profile": {
+      "title": "تعديل ملفك الشخصي",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الأخير",
+      "email": "البريد الإلكتروني",
+      "address": "العنوان",
+      "passwordChanges": "تغيير كلمة المرور",
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+      "cancel": "إلغاء",
+      "saveChanges": "حفظ التغييرات",
+      "saving": "جاري الحفظ...",
+      "success": "تم تحديث الملف الشخصي بنجاح!",
+      "error": "فشل تحديث الملف الشخصي",
+      "passwordMismatch": "كلمات المرور غير متطابقة",
+      "currentPasswordRequired": "كلمة المرور الحالية مطلوبة لتعيين كلمة مرور جديدة",
+      "guest": "ضيف",
+      "addressPlaceholder": "كينغستون، 5236، الولايات المتحدة",
+      "emailPlaceholder": "Your.Email@gmail.com",
+      "memberSince": "عضو منذ"
+    },
+    "orders": {
+      "title": "طلباتي",
+      "empty": "ليس لديك طلبات سابقة. عند إجراء طلب، سيظهر هنا.",
+      "orderId": "رقم الطلب",
+      "qty": "الكمية",
+      "status": "الحالة",
+      "statuses": {
+        "pending": "قيد الانتظار",
+        "processing": "جاري المعالجة",
+        "shipped": "تم الشحن",
+        "delivered": "تم التوصيل",
+        "cancelled": "ملغي"
+      }
+    },
+    "cancellations": {
+      "title": "إلغاءاتي",
+      "empty": "ليس لديك طلبات ملغاة."
+    },
+    "reviews": {
+      "title": "تقييماتي",
+      "empty": "لم تكتب أي تقييمات بعد."
+    }
+  },
+  "wishlist": {
+    "title": "قائمة الرغبات",
+    "titleWithCount": "قائمة الرغبات ({{count}})",
+    "moveAllToBag": "نقل الكل إلى السلة",
+    "empty": "قائمة الرغبات فارغة.",
+    "justForYou": "لك فقط",
+    "seeAll": "عرض الكل",
+    "moveSuccess": "تم نقل جميع المنتجات إلى السلة!"
+  },
+  "common": {
+    "home": "الرئيسية",
+    "required": "مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح",
+    "time": {
+      "days": "أيام",
+      "hours": "ساعات",
+      "minutes": "دقائق",
+      "seconds": "ثواني"
+    },
+    "buttons": {
+      "addToCart": "إضافة للسلة",
+      "buyNow": "اشتري الآن",
+      "applyCoupon": "تطبيق القسيمة",
+      "checkout": "إتمام الشراء",
+      "updateCart": "تحديث السلة",
+      "returnToShop": "العودة للمتجر"
+    },
+    "placeholders": {
+      "email": "أدخل بريدك الإلكتروني",
+      "address": "أدخل عنوانك بالتفصيل"
+    },
+    "returnToHome": "العودة للرئيسية",
+    "currency": "$",
+    "locale": "ar-EG"
+  }
+}

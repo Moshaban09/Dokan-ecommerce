@@ -1,0 +1,487 @@
+{
+  "nav": {
+    "home": "Home",
+    "contact": "Contact",
+    "about": "About",
+    "login": "Login",
+    "logout": "Logout",
+    "signup": "Sign Up",
+    "searchPlaceholder": "What are you looking for?",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "selectLanguage": "Select Language",
+    "brand": "Dokan",
+    "loginRequired": "Please log in to access your wishlist"
+  },
+  "topHeader": {
+    "promo": "Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!",
+    "promoMobile": "Summer Sale - OFF 50%!",
+    "shopNow": "ShopNow"
+  },
+  "home": {
+    "heroSlides": {
+      "iphone": {
+        "brand": "iPhone 14 Series",
+        "title": "Up to 10%\noff Voucher",
+        "cta": "Shop Now"
+      },
+      "ps5": {
+        "brand": "PlayStation 5",
+        "title": "The Ultimate\nGaming Console",
+        "cta": "Shop Now"
+      },
+      "camera": {
+        "brand": "Canon EOS R5",
+        "title": "Pro Quality\nPhotography",
+        "cta": "Shop Now"
+      },
+      "laptop": {
+        "brand": "ASUS ROG Zephyrus",
+        "title": "Next Gen\nGaming Laptops",
+        "cta": "Shop Now"
+      },
+      "fashion": {
+        "brand": "Dokan Fashion",
+        "title": "Modern Style\n& Comfort",
+        "cta": "Shop Now"
+      }
+    },
+    "categories": "Categories",
+    "browseAllCategories": "Browse All Categories",
+    "newArrival": "New Arrival",
+    "featured": "Featured",
+    "shopNow": "Shop Now",
+    "collection": "Collection",
+    "promo": {
+      "label": "Special Offer",
+      "title": "Enhance Your\nExperience",
+      "buyNow": "Buy Now!",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "sidebar": {
+      "womensDresses": "Womens Dresses",
+      "mensShirts": "Mens Shirts",
+      "smartphones": "Smartphones",
+      "furniture": "Furniture",
+      "beauty": "Beauty",
+      "sportsAccessories": "Sports Accessories",
+      "vehicle": "Vehicle",
+      "groceries": "Groceries",
+      "skinCare": "Skin Care",
+      "laptops": "Laptops",
+      "fragrances": "Fragrances",
+      "homeDecoration": "Home Decoration",
+      "kitchenAccessories": "Kitchen Accessories",
+      "tablets": "Tablets",
+      "smartWatches": "Smart Watches",
+      "mobileAccessories": "Mobile Accessories",
+      "tops": "Tops",
+      "mensShoes": "Mens Shoes",
+      "womensShoes": "Womens Shoes",
+      "womensBags": "Womens Bags",
+      "womensJewellery": "Womens Jewellery",
+      "sunglasses": "Sunglasses",
+      "lighting": "Lighting",
+      "motorcycle": "Motorcycle",
+      "gaming": "Gaming",
+      "headphones": "Headphones"
+    },
+    "flashSales": {
+      "title": "Flash Sales",
+      "label": "Today's",
+      "viewAll": "View All Products"
+    },
+    "bestSelling": {
+      "title": "Best Selling Products",
+      "label": "This Month",
+      "viewAll": "View All"
+    },
+    "explore": {
+      "title": "Explore Our Products",
+      "label": "Our Products",
+      "viewAll": "View All Products"
+    },
+    "browseByCategory": {
+      "title": "Browse By Category",
+      "label": "Categories",
+      "viewAll": "View All Categories"
+    },
+    "features": {
+      "delivery": {
+        "title": "FREE AND FAST DELIVERY",
+        "desc": "Free delivery for all orders over $140"
+      },
+      "service": {
+        "title": "24/7 CUSTOMER SERVICE",
+        "desc": "Friendly 24/7 customer support"
+      },
+      "guarantee": {
+        "title": "MONEY BACK GUARANTEE",
+        "desc": "We return money within 30 days"
+      }
+    }
+  },
+  "products": {
+    "allProducts": "All Products",
+    "category": {
+      "title": "Category",
+      "noProducts": "No products found in this category.",
+      "loadError": "Failed to load products for this category."
+    },
+    "addToCart": "Add To Cart",
+    "addedToCart": "Added to cart",
+    "removedFromCart": "Removed from cart",
+    "addedToWishlist": "Added to wishlist",
+    "removedFromWishlist": "Removed from wishlist",
+    "viewCart": "View Cart",
+    "checkCart": "Check your cart to checkout",
+    "quickView": "Quick view",
+    "details": {
+      "availability": "Availability:",
+      "inStock": "In Stock",
+      "outOfStock": "Out of Stock",
+      "category": "Category:",
+      "reviews_one": "(1 Review)",
+      "reviews_other": "({{count}} Reviews)",
+      "relatedItems": "Related Items",
+      "colours": "Colours",
+      "colors": {
+        "blue": "Blue",
+        "red": "Red"
+      },
+      "size": "Size",
+      "sizes": {
+        "xs": "XS",
+        "s": "S",
+        "m": "M",
+        "l": "L",
+        "xl": "XL"
+      },
+      "buyNow": "Buy Now",
+      "delivery": {
+        "title": "Free Delivery",
+        "hint": "Enter your postal code for Delivery Availability"
+      },
+      "return": {
+        "title": "Return Delivery",
+        "desc": "Free 30 Days Delivery Returns. ",
+        "details": "Details"
+      }
+    },
+    "status": {
+      "new": "New",
+      "sale": "Sale"
+    },
+    "errors": {
+      "404": {
+        "title": "404 Not Found",
+        "message": "Your visited page not found. You may go home page.",
+        "backToHome": "Back to home page",
+        "breadcrumb": "404 Error"
+      },
+      "notFound": "Product not found",
+      "loadFailed": "Failed to load product details.",
+      "noProductsInCategory": "No products found in this category."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "products": "Products"
+    },
+    "search": {
+      "title": "Search: {{query}}",
+      "resultsTitle": "Search Results",
+      "showingResults": "Showing results for \"{{query}}\"",
+      "itemsFound_one": "1 item found",
+      "itemsFound_other": "{{count}} items found",
+      "loading": "Searching for products...",
+      "noResults": "No results found",
+      "noResultsDesc": "We couldn't find any products matching your search. Try different keywords."
+    },
+    "specifications": {
+      "title": "Specifications",
+      "sku": "SKU",
+      "weight": "Weight",
+      "dimensions": "Dimensions",
+      "width": "Width",
+      "height": "Height",
+      "depth": "Depth",
+      "warranty": "Warranty",
+      "shipping": "Shipping",
+      "returnPolicy": "Return Policy",
+      "minOrder": "Min Order"
+    }
+  },
+  "footer": {
+    "subscribe": "Subscribe",
+    "getOff": "Get 10% off your first order",
+    "emailPlaceholder": "Enter your email",
+    "support": "Support",
+    "address": "111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.",
+    "account": "Account",
+    "myAccount": "My Account",
+    "loginRegister": "Login / Register",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "shop": "Shop",
+    "quickLink": "Quick Link",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms Of Use",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "downloadApp": "Download App",
+    "saveApp": "Save $3 with App New User Only",
+    "copyright": "Copyright Dokan 2025. All right reserved"
+  },
+  "auth": {
+    "login": {
+      "title": "Log in to Dokan",
+      "subtitle": "Enter your details below",
+      "emailPlaceholder": "Email or Phone Number",
+      "passwordPlaceholder": "Password",
+      "submit": "Log In",
+      "submitting": "Logging in...",
+      "forgetPassword": "Forget Password?",
+      "noAccount": "Don't have an account?",
+      "signup": "Sign up",
+      "invalidCredentials": "Email or password is incorrect"
+    },
+    "signup": {
+      "title": "Create an account",
+      "subtitle": "Enter your details below",
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "Email or Phone Number",
+      "passwordPlaceholder": "Password",
+      "submit": "Create Account",
+      "submitting": "Creating Account...",
+      "withGoogle": "Sign up with Google",
+      "googleSoon": "Google sign-up will be available soon!",
+      "hasAccount": "Already have account?",
+      "login": "Log in"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email to receive a reset link",
+      "emailPlaceholder": "Email",
+      "submit": "Send Reset Link",
+      "submitting": "Sending...",
+      "backToLogin": "Back to Log in",
+      "success": "Password reset link sent to your email!",
+      "emailError": "Please enter a valid email address"
+    }
+  },
+  "about": {
+    "story": {
+      "title": "Our Story",
+      "p1": "Launched in 2015, Dokan is South Asia's premier online shopping marketplace with an active presence in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Dokan has 10,500 sellers and 300 brands and serves 3 millions customers across the region.",
+      "p2": "Dokan has more than 1 Million products to offer, growing at a very fast. Dokan offers a diverse assortment in categories ranging from consumer."
+    },
+    "stats": {
+      "sellers": "Sellers active our site",
+      "sales": "Monthly Product Sale",
+      "customers": "Customer active in our site",
+      "gross": "Anual gross sale in our site"
+    },
+    "team": {
+      "founder": "Founder & Chairman",
+      "director": "Managing Director",
+      "designer": "Product Designer",
+      "members": {
+        "member1": "Amir Ali",
+        "member2": "Ahmed Hassan",
+        "member3": "Omar Fahmy"
+      }
+    }
+  },
+  "contact": {
+    "callToUs": {
+      "title": "Call To Us",
+      "desc": "We are available 24/7, 7 days a week.",
+      "phone": "Phone: +8801611112222"
+    },
+    "writeToUs": {
+      "title": "Write To Us",
+      "desc": "Fill out our form and we will contact you within 24 hours.",
+      "emails": "Emails: customer@dokan.com\nEmails: support@dokan.com"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Your Phone",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Message sent successfully! We will contact you soon."
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty.",
+    "return": "Return To Shop",
+    "table": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal"
+    },
+    "total": {
+      "title": "Cart Total",
+      "subtotal": "Subtotal:",
+      "shipping": "Shipping:",
+      "free": "Free",
+      "total": "Total:",
+      "discount": "Discount (10%):",
+      "checkout": "Proceed to checkout",
+      "loginToCheckout": "Login to checkout"
+    },
+    "coupon": {
+      "placeholder": "Coupon Code",
+      "apply": "Apply Coupon",
+      "remove": "Remove",
+      "invalid": "Invalid coupon code",
+      "success": "Coupon applied successfully!",
+      "alreadyApplied": "Coupon already applied",
+      "hint": "Hint: Use ",
+      "forDiscount": " for 10% off!"
+    },
+    "clear": "Clear Cart",
+    "clearSuccess": "Cart cleared successfully!"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "billingDetails": "Billing Details",
+    "firstName": "First Name",
+    "companyName": "Company Name",
+    "streetAddress": "Street Address",
+    "apartment": "Apartment, floor, etc. (optional)",
+    "city": "Town/City",
+    "phoneNumber": "Phone Number",
+    "email": "Email Address",
+    "saveInfo": "Save this information for faster check-out next time",
+    "placeOrder": "Place Order",
+    "processing": "Processing...",
+    "bankTransfer": "Bank Transfer",
+    "cashOnDelivery": "Cash on Delivery",
+    "paymentSuccess": "Payment successful! Order placed.",
+    "failedOrder": "Failed to place order. Please try again.",
+    "verifyingPayment": "Verifying payment details...",
+    "processingSecurely": "Processing payment securely...",
+    "errors": {
+      "firstName": "First name is required",
+      "streetAddress": "Street address is required",
+      "city": "City is required",
+      "phoneNumber": "Phone number is required",
+      "email": "Valid email is required",
+      "emptyCart": "Your cart is empty"
+    }
+  },
+  "orderSuccess": {
+    "title": "Order Placed Successfully!",
+    "message": "Thank you for your purchase. We have received your order and are processing it.",
+    "orderId": "Order ID",
+    "date": "Date",
+    "status": "Status",
+    "paymentMethod": "Payment Method",
+    "total": "Total",
+    "viewOrders": "View My Orders",
+    "continueShopping": "Continue Shopping",
+    "itemsOrdered_one": "1 item ordered",
+    "itemsOrdered_other": "{{count}} items ordered",
+    "moreItems": "+{{count}} more items"
+  },
+  "account": {
+    "welcome": "Welcome!",
+    "sidebar": {
+      "manageAccount": "Manage My Account",
+      "myProfile": "My Profile",
+      "addressBook": "Address Book",
+      "paymentOptions": "My Payment Options",
+      "myOrders": "My Orders",
+      "myReturns": "My Returns",
+      "myCancellations": "My Cancellations",
+      "myWishlist": "My WishList",
+      "myReviews": "My Reviews"
+    },
+    "profile": {
+      "title": "Edit Your Profile",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "address": "Address",
+      "passwordChanges": "Password Changes",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "saving": "Saving...",
+      "success": "Profile updated successfully!",
+      "error": "Failed to update profile",
+      "passwordMismatch": "Passwords don't match",
+      "currentPasswordRequired": "Current password is required to set a new password",
+      "guest": "Guest",
+      "addressPlaceholder": "Kingston, 5236, United State",
+      "emailPlaceholder": "Your.Email@gmail.com",
+      "memberSince": "Member Since"
+    },
+    "orders": {
+      "title": "My Orders",
+      "empty": "You have no previous orders. When you place an order, it will appear here.",
+      "orderId": "Order ID",
+      "qty": "Qty",
+      "status": "Status",
+      "statuses": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "shipped": "Shipped",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled"
+      }
+    },
+    "cancellations": {
+      "title": "My Cancellations",
+      "empty": "You have no cancelled orders."
+    },
+    "reviews": {
+      "title": "My Reviews",
+      "empty": "You haven't written any reviews yet."
+    }
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "titleWithCount": "Wishlist ({{count}})",
+    "moveAllToBag": "Move All To Bag",
+    "empty": "Your wishlist is empty.",
+    "justForYou": "Just For You",
+    "seeAll": "See All",
+    "moveSuccess": "All items moved to bag!"
+  },
+  "common": {
+    "home": "Home",
+    "required": "Required",
+    "invalidEmail": "Invalid email address",
+    "time": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "buttons": {
+      "addToCart": "Add to Cart",
+      "buyNow": "Buy Now",
+      "applyCoupon": "Apply Coupon",
+      "checkout": "Proceed to Checkout",
+      "updateCart": "Update Cart",
+      "returnToShop": "Return To Shop"
+    },
+    "placeholders": {
+      "email": "Enter your email",
+      "address": "Enter your address details"
+    },
+    "returnToHome": "Return to Home",
+    "currency": "$",
+    "locale": "en-US"
+  }
+}
