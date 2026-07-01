@@ -10,9 +10,9 @@ import { useAuth } from "../hooks/use-auth";
 import { useTranslation } from "react-i18next";
 
 const signupSchema = z.object({
-  name: z.string().trim().min(2, "common.required"),
-  email: z.string().trim().email("common.required"),
-  password: z.string().min(6, "common.required"),
+  name: z.string().trim().min(2, "validation.nameMin"),
+  email: z.string().trim().email("validation.emailInvalid"),
+  password: z.string().min(6, "validation.passwordMin"),
 });
 
 type SignupFormValues = z.infer<typeof signupSchema>;

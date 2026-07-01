@@ -86,7 +86,7 @@ export default function AccountPage() {
       <div className="flex flex-wrap justify-between items-center gap-4 mb-10">
         <Breadcrumb
           items={[
-            { label: t("common.home"), path: "/" },
+            { label: t("common.home"), to: "/" },
             { label: t("account.sidebar.myProfile"), active: true },
           ]}
           className="mb-0"

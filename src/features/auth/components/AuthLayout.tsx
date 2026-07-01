@@ -13,7 +13,6 @@ export function AuthLayout() {
         />
       </div>
 
-      {}
       <div className="w-full lg:w-1/2 flex items-center justify-center px-4 lg:px-0">
         <Suspense
           fallback={

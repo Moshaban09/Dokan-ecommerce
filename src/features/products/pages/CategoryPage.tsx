@@ -64,8 +64,8 @@ export default function CategoryPage() {
       <div className="flex flex-col gap-4">
         <Breadcrumb 
           items={[
-            { label: t("common.home"), href: "/" },
-            { label: t("products.breadcrumb.products"), href: "/products" },
+            { label: t("common.home"), to: "/" },
+            { label: t("products.breadcrumb.products"), to: "/products" },
             { label: displayTitle, active: true }
           ]}
         />

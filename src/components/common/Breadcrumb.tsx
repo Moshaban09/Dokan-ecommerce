@@ -5,8 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 
 export interface BreadcrumbItem {
   label: string;
-  href?: string;
-  path?: string;  
+  to?: string;
   active?: boolean;
 }
 
@@ -25,18 +24,14 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
           <li key={index} className="flex items-center">
             {index > 0 && (
               <span className="mx-2 text-black/50">
-                {isRtl ? (
-                  <ChevronRight size={14} className="rotate-180" />
-                ) : (
-                  <ChevronRight size={14} />
-                )}
+                <ChevronRight size={14} className={cn(isRtl && "rotate-180")} />
               </span>
             )}
-            {item.active || (!item.href && !item.path) ? (
+            {item.active || !item.to ? (
               <span className="text-black font-medium">{item.label}</span>
             ) : (
               <Link
-                to={item.href ?? item.path ?? "/"}
+                to={item.to}
                 className="text-black/50 hover:text-black transition-colors"
               >
                 {item.label}

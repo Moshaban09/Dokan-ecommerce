@@ -12,7 +12,7 @@ export default function NotFoundPage() {
     <div className="container mx-auto px-4 lg:px-33.75 py-10 md:py-20 flex flex-col gap-10 min-h-[70vh]">
       <Breadcrumb 
         items={[
-          { label: t("common.home"), href: "/" },
+          { label: t("common.home"), to: "/" },
           { label: t("products.errors.404.breadcrumb"), active: true }
         ]}
       />

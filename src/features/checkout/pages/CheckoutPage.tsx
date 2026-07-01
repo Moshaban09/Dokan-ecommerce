@@ -209,8 +209,8 @@ export default function CheckoutPage() {
   };
 
   const breadcrumbItems = [
-    { label: t("common.home"), href: "/" },
-    { label: t("cart.title"), href: "/cart" },
+    { label: t("common.home"), to: "/" },
+    { label: t("cart.title"), to: "/cart" },
     { label: t("checkout.title"), active: true },
   ];
 

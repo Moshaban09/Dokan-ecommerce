@@ -14,8 +14,8 @@ export function ProtectedRoute() {
   }
 
   if (!isAuthenticated) {
-    
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    const redirectTo = location.pathname !== "/" ? `?redirect=${encodeURIComponent(location.pathname)}` : "";
+    return <Navigate to={`/login${redirectTo}`} replace />;
   }
 
   return <Outlet />;

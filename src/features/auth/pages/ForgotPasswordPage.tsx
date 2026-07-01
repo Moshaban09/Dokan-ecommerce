@@ -1,21 +1,22 @@
 import { Link } from "react-router";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 import { Button } from "@/components/ui/button";
+import { UnderlineInput } from "@/components/ui/UnderlineInput";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
+const forgotPasswordSchema = z.object({
+  email: z.string().trim().email("validation.emailInvalid"),
+});
+
+type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
+
 export default function ForgotPasswordPage() {
   const { t } = useTranslation();
   useDocumentTitle(t("auth.forgotPassword.title"));
-
-  const forgotPasswordSchema = z.object({
-    email: z.string().trim().email(t("auth.forgotPassword.emailError")),
-  });
-
-  type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
 
   const {
     register,
@@ -25,9 +26,8 @@ export default function ForgotPasswordPage() {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (_data: ForgotPasswordFormValues) => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    
     toast.success(t("auth.forgotPassword.success"));
   };
 
@@ -44,17 +44,12 @@ export default function ForgotPasswordPage() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
         <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <input
-              {...register("email")}
-              type="email"
-              placeholder={t("auth.forgotPassword.emailPlaceholder")}
-              className="w-full border-0 border-b border-black/30 py-2 focus:border-black/50 outline-none transition-all placeholder:text-black/50 font-poppins text-base text-black"
-            />
-            {errors.email && (
-              <span className="text-xs text-red-500 font-poppins">{errors.email.message}</span>
-            )}
-          </div>
+          <UnderlineInput
+            {...register("email")}
+            type="email"
+            placeholder={t("auth.forgotPassword.emailPlaceholder")}
+            error={errors.email?.message ? t(errors.email.message) : undefined}
+          />
         </div>
 
         <div className="flex flex-col gap-4 mt-2">

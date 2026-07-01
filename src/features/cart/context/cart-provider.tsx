@@ -21,11 +21,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (isGuest) {
-      Promise.resolve().then(() => {
-        setItems([]);
-        setIsCouponApplied(false);
-        setAppliedCouponCode(null);
-      });
+      setItems([]);
+      setIsCouponApplied(false);
+      setAppliedCouponCode(null);
     }
   }, [isGuest]);
 

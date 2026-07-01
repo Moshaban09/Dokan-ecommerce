@@ -259,7 +259,8 @@
       "withGoogle": "Sign up with Google",
       "googleSoon": "Google sign-up will be available soon!",
       "hasAccount": "Already have account?",
-      "login": "Log in"
+      "login": "Log in",
+      "alreadyExists": "An account with this email already exists. Please log in instead."
     },
     "forgotPassword": {
       "title": "Forgot Password",
@@ -461,6 +462,7 @@
   "common": {
     "home": "Home",
     "required": "Required",
+    "error": "Something went wrong. Please try again.",
     "invalidEmail": "Invalid email address",
     "time": {
       "days": "Days",
@@ -483,5 +485,11 @@
     "returnToHome": "Return to Home",
     "currency": "$",
     "locale": "en-US"
+  },
+  "validation": {
+    "nameMin": "Name must be at least 2 characters",
+    "emailInvalid": "Please enter a valid email address",
+    "passwordMin": "Password must be at least 6 characters",
+    "passwordRequired": "Password is required"
   }
 }

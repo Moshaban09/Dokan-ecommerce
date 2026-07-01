@@ -22,10 +22,8 @@ export const useCartProducts = () => {
     const currentIds = itemIdsString ? itemIdsString.split(",").map(Number) : [];
 
     if (currentIds.length === 0) {
-      Promise.resolve().then(() => {
-        setProducts([]);
-        setIsLoading(false);
-      });
+      setProducts([]);
+      setIsLoading(false);
       return;
     }
 

@@ -45,8 +45,8 @@ export default function SearchResultsPage() {
       <div className="flex flex-col gap-8 md:gap-10">
         <Breadcrumb 
           items={[
-            { label: t("common.home"), href: "/" },
-            { label: t("products.breadcrumb.products"), href: "/products" },
+            { label: t("common.home"), to: "/" },
+            { label: t("products.breadcrumb.products"), to: "/products" },
             { label: query || t("products.search.resultsTitle"), active: true }
           ]}
         />

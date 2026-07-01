@@ -46,7 +46,7 @@ export default function ContactPage() {
     <PageContainer className="py-20 flex flex-col">
       <Breadcrumb 
         items={[
-          { label: t("common.home"), href: "/" },
+          { label: t("common.home"), to: "/" },
           { label: t("nav.contact"), active: true }
         ]} 
         className="mb-20"

@@ -94,7 +94,7 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 lg:px-[135px] py-10 md:py-20 flex flex-col gap-20 md:gap-32 text-black">
       <Breadcrumb 
         items={[
-          { label: t("common.home"), href: "/" },
+          { label: t("common.home"), to: "/" },
           { label: t("nav.about"), active: true }
         ]} 
         className="-mb-10 md:-mb-20"

@@ -155,9 +155,9 @@ export default function ProductDetailsPage() {
   const categoryName = translationKey ? t(translationKey) : product.category.replace("-", " ");
 
   const breadcrumbItems = [
-    { label: t("common.home"), href: "/" },
-    { label: t("products.breadcrumb.products"), href: "/products" },
-    { label: categoryName, href: `/category/${product.category}` },
+    { label: t("common.home"), to: "/" },
+    { label: t("products.breadcrumb.products"), to: "/products" },
+    { label: categoryName, to: `/category/${product.category}` },
     { label: product.title, active: true },
   ];
 

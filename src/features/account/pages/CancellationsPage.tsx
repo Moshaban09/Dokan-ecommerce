@@ -16,8 +16,8 @@ export default function CancellationsPage() {
       <div className="flex flex-wrap justify-between items-center gap-4 mb-10">
         <Breadcrumb
           items={[
-            { label: t("common.home"), path: "/" },
-            { label: t("account.sidebar.manageAccount"), path: "/account" },
+            { label: t("common.home"), to: "/" },
+            { label: t("account.sidebar.manageAccount"), to: "/account" },
             { label: t("account.cancellations.title"), active: true },
           ]}
           className="mb-0"

@@ -32,7 +32,7 @@ export default function CartPage() {
       <div className="flex flex-col gap-10">
         <Breadcrumb
           items={[
-            { label: t("common.home"), path: "/" },
+            { label: t("common.home"), to: "/" },
             { label: t("cart.title"), active: true },
           ]}
           className="mb-10"

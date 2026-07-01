@@ -64,8 +64,8 @@ export default function ProductsPage() {
     <div className="container mx-auto px-4 lg:px-33.75 py-10 md:py-20 flex flex-col gap-10 text-black min-h-125">
       <Breadcrumb 
         items={[
-          { label: t("common.home"), href: "/" },
-          { label: t("products.breadcrumb.products"), active: !selectedCategory, href: selectedCategory ? "/products" : undefined },
+          { label: t("common.home"), to: "/" },
+          { label: t("products.breadcrumb.products"), active: !selectedCategory, to: selectedCategory ? "/products" : undefined },
           ...(selectedCategory ? [{ label: getTranslatedCategory(selectedCategory), active: true }] : [])
         ]}
       />
