@@ -32,7 +32,7 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 const generateOrderNumber = () =>
-  "ORD-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+  "ORD-" + crypto.randomUUID().replace(/-/g, "").substring(0, 8).toUpperCase();
 
 const FIELD_CONFIGS: {
   id: keyof CheckoutFormValues;
@@ -95,13 +95,33 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<"bank" | "cod">("cod");
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const [saveInfo, setSaveInfo] = useState(() => {
+    return localStorage.getItem("checkout_save_info") === "true";
+  });
+
+  const savedInfo = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("checkout_saved_info") ?? "null");
+    } catch {
+      return null;
+    }
+  })();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
-    defaultValues: { email: user?.email ?? "" },
+    defaultValues: {
+      email: savedInfo?.email ?? user?.email ?? "",
+      firstName: savedInfo?.firstName ?? "",
+      companyName: savedInfo?.companyName ?? "",
+      streetAddress: savedInfo?.streetAddress ?? "",
+      apartment: savedInfo?.apartment ?? "",
+      city: savedInfo?.city ?? "",
+      phoneNumber: savedInfo?.phoneNumber ?? "",
+    },
   });
 
   const discount = isCouponApplied ? subtotal * 0.1 : 0;
@@ -117,6 +137,14 @@ export default function CheckoutPage() {
   const onSubmit = async (data: CheckoutFormValues) => {
     if (!user?.id) return;
     try {
+      if (saveInfo) {
+        localStorage.setItem("checkout_save_info", "true");
+        localStorage.setItem("checkout_saved_info", JSON.stringify(data));
+      } else {
+        localStorage.removeItem("checkout_save_info");
+        localStorage.removeItem("checkout_saved_info");
+      }
+
       toast.loading(t("checkout.verifyingPayment"), { id: "payment" });
       await new Promise((resolve) => setTimeout(resolve, 1500));
       toast.loading(t("checkout.processingSecurely"), { id: "payment" });
@@ -176,26 +204,6 @@ export default function CheckoutPage() {
       if (orderItemsError) throw new Error(orderItemsError.message);
 
       await clearCart();
-
-      const savedOrder = {
-        id: orderNumber,
-        date: new Date().toISOString(),
-        total: totalAmount,
-        status: "pending",
-        paymentMethod,
-        items: products.map(({ product, quantity }) => ({
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          quantity,
-          thumbnail: product.thumbnail,
-        })),
-      };
-      const prevOrders = JSON.parse(localStorage.getItem("orders") || "[]");
-      localStorage.setItem(
-        "orders",
-        JSON.stringify([...prevOrders, savedOrder]),
-      );
 
       toast.success(t("checkout.paymentSuccess"), { id: "payment" });
       setIsSuccess(true);
@@ -261,6 +269,8 @@ export default function CheckoutPage() {
                 <input
                   type="checkbox"
                   id="saveInfo"
+                  checked={saveInfo}
+                  onChange={(e) => setSaveInfo(e.target.checked)}
                   className="w-5 h-5 accent-primary cursor-pointer rounded border-black/30"
                 />
                 <label
