@@ -212,6 +212,9 @@
       "shipping": "Shipping",
       "returnPolicy": "Return Policy",
       "minOrder": "Min Order"
+    },
+    "pagination": {
+      "showing": "Showing {{from}}–{{to}} of {{total}} products"
     }
   },
   "footer": {
@@ -271,6 +274,11 @@
       "backToLogin": "Back to Log in",
       "success": "Password reset link sent to your email!",
       "emailError": "Please enter a valid email address"
+    },
+    "toast": {
+      "loginSuccess": "Logged in successfully!",
+      "signupSuccess": "Account created successfully!",
+      "logoutSuccess": "Logged out successfully"
     }
   },
   "about": {

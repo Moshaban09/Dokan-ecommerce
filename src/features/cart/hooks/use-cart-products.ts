@@ -3,49 +3,61 @@ import type { Product } from "@/features/products/types";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useCart } from "./use-cart";
 
+const productCache = new Map<number, Product>();
+
 export const useCartProducts = () => {
   const { items } = useCart();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(items.length > 0);
-
-  const productsRef = useRef(products);
-  useEffect(() => { productsRef.current = products; }, [products]);
-
-  const itemIdsString = useMemo(
-    () => items.map((i) => i.id).sort().join(","),
-    [items],
+  const [products, setProducts] = useState<Product[]>(() =>
+    items.map((i) => productCache.get(i.id)).filter(Boolean) as Product[]
   );
+  const [isLoading, setIsLoading] = useState(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
-    let ignore = false;
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
 
-    const currentIds = itemIdsString ? itemIdsString.split(",").map(Number) : [];
+  const itemIds = useMemo(() => items.map((i) => i.id), [items]);
 
-    if (currentIds.length === 0) {
+  useEffect(() => {
+    if (itemIds.length === 0) {
       setProducts([]);
       setIsLoading(false);
       return;
     }
 
-    const cachedIds = new Set(productsRef.current.map((p) => p.id));
-    if (!currentIds.every((id) => cachedIds.has(id))) setIsLoading(true);
+    const missingIds = itemIds.filter((id) => !productCache.has(id));
+
+    if (missingIds.length === 0) {
+      setProducts(itemIds.map((id) => productCache.get(id)!));
+      return;
+    }
+
+    let ignore = false;
+    setIsLoading(true);
 
     const load = async () => {
       try {
-        const results = await Promise.all(
-          currentIds.map((id) => ProductService.getProductById(id)),
+        const fetched = await Promise.all(
+          missingIds.map((id) => ProductService.getProductById(id))
         );
-        if (!ignore) setProducts(results);
+
+        fetched.forEach((p) => productCache.set(p.id, p));
+
+        if (!ignore && mountedRef.current) {
+          setProducts(itemIds.map((id) => productCache.get(id)!).filter(Boolean));
+        }
       } catch {
         // ignore
       } finally {
-        if (!ignore) setIsLoading(false);
+        if (!ignore && mountedRef.current) setIsLoading(false);
       }
     };
 
     load();
     return () => { ignore = true; };
-  }, [itemIdsString]);
+  }, [itemIds]);
 
   const subtotal = useMemo(
     () =>
