@@ -1,8 +1,9 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, ScrollRestoration } from 'react-router';
 import { MainLayout } from './features/layout';
 import { ProtectedRoute } from './features/auth/components/ProtectedRoute';
 import { AuthLayout } from './features/auth/components/AuthLayout';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 const HomePage = lazy(() => import('./features/home/pages/HomePage'));
 const LoginPage = lazy(() => import('./features/auth/pages/LoginPage'));
 const SignupPage = lazy(() => import('./features/auth/pages/SignupPage'));
@@ -93,8 +94,21 @@ const router = createBrowserRouter([
   },
 ]);
 
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary" />
+  </div>
+);
+
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<PageLoader />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ErrorBoundary>
+  );
 }
 
 export default App;
+
