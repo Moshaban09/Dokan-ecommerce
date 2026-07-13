@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import i18n from "@/lib/i18n";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { useEffect, useState, type ReactNode } from "react";
 import { toast } from "sonner";
@@ -70,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       password: data.password,
     });
     if (error) throw new Error("auth.login.invalidCredentials");
-    toast.success("Logged in successfully!");
+    toast.success(i18n.t("auth.toast.loginSuccess"));
   };
 
   const signup = async (data: SignupData) => {
@@ -89,12 +90,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       );
     }
 
-    toast.success("Account created successfully!");
+    toast.success(i18n.t("auth.toast.signupSuccess"));
   };
 
   const logout = async () => {
     await supabase.auth.signOut();
-    toast.success("Logged out successfully");
+    toast.success(i18n.t("auth.toast.logoutSuccess"));
   };
 
   const updateUser = async (data: UpdateUserData) => {

@@ -28,6 +28,15 @@ export default function ProductDetailsPage() {
 
   useDocumentTitle(product?.title || t("products.breadcrumb.products"));
 
+  const CLOTHING_CATEGORIES = [
+    "mens-shirts", "womens-dresses", "womens-tops",
+    "womens-shoes", "mens-shoes", "tops", "clothing",
+    "shirts", "shoes", "fashion", "bags-purses",
+  ];
+  const showVariants = product
+    ? CLOTHING_CATEGORIES.includes(product.category)
+    : false;
+
   const COLORS = [
     { name: t("products.details.colors.blue"), value: "bg-[#AEC6CF]" },
     { name: t("products.details.colors.red"), value: "bg-[#E06666]" },
@@ -236,45 +245,49 @@ export default function ProductDetailsPage() {
             {product.description}
           </p>
 
-          <div className="flex items-center gap-6 mb-6">
-            <span className="text-lg md:text-[20px] font-inter">{t("products.details.colours")}</span>
-            <div className="flex items-center gap-2">
-              {COLORS.map((color) => (
-                <button
-                  key={color.name}
-                  onClick={() => setSelectedColor(color.name)}
-                  aria-label={`Select ${color.name} color`}
-                  className={cn(
-                    "w-5 h-5 rounded-full outline-offset-2 transition-all cursor-pointer",
-                    color.value,
-                    selectedColor === color.name
-                      ? "outline outline-black"
-                      : "",
-                  )}
-                />
-              ))}
+          {showVariants && (
+            <div className="flex items-center gap-6 mb-6">
+              <span className="text-lg md:text-[20px] font-inter">{t("products.details.colours")}</span>
+              <div className="flex items-center gap-2">
+                {COLORS.map((color) => (
+                  <button
+                    key={color.name}
+                    onClick={() => setSelectedColor(color.name)}
+                    aria-label={`Select ${color.name} color`}
+                    className={cn(
+                      "w-5 h-5 rounded-full outline-offset-2 transition-all cursor-pointer",
+                      color.value,
+                      selectedColor === color.name
+                        ? "outline outline-black"
+                        : "",
+                    )}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="flex items-center gap-6 mb-8 md:mb-10">
-            <span className="text-lg md:text-[20px] font-inter">{t("products.details.size")}</span>
-            <div className="flex items-center gap-2 md:gap-4 flex-wrap">
-              {SIZES.map((size) => (
-                <button
-                  key={size.value}
-                  onClick={() => setSelectedSize(size.value)}
-                  className={cn(
-                    "w-8 h-8 rounded flex items-center justify-center text-[13px] md:text-[14px] font-medium transition-all cursor-pointer",
-                    selectedSize === size.value
-                      ? "bg-primary text-white border-transparent"
-                      : "bg-white text-black border border-black/50 hover:border-black",
-                  )}
-                >
-                  {size.label}
-                </button>
-              ))}
+          {showVariants && (
+            <div className="flex items-center gap-6 mb-8 md:mb-10">
+              <span className="text-lg md:text-[20px] font-inter">{t("products.details.size")}</span>
+              <div className="flex items-center gap-2 md:gap-4 flex-wrap">
+                {SIZES.map((size) => (
+                  <button
+                    key={size.value}
+                    onClick={() => setSelectedSize(size.value)}
+                    className={cn(
+                      "w-8 h-8 rounded flex items-center justify-center text-[13px] md:text-[14px] font-medium transition-all cursor-pointer",
+                      selectedSize === size.value
+                        ? "bg-primary text-white border-transparent"
+                        : "bg-white text-black border border-black/50 hover:border-black",
+                    )}
+                  >
+                    {size.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="flex flex-wrap items-center gap-4 mb-8 md:mb-10">
             <div className="flex items-center h-11 border border-black/50 rounded overflow-hidden">
