@@ -40,13 +40,13 @@ export const Navbar = () => {
 
       <div className="border-b border-black/10">
         <div className="max-w-360 mx-auto flex items-center justify-between px-2 md:px-4 h-23.5">
-          <div className="flex items-center gap-4 md:gap-47.5">
+          <div className="flex items-center gap-4 md:gap-8 xl:gap-47.5">
             <Link to="/" className="text-[24px] font-bold text-black shrink-0">
               {t("nav.brand")}
             </Link>
 
             <NavLinks
-              className="hidden md:flex items-center gap-12"
+              className="hidden md:flex items-center gap-6 lg:gap-12"
               itemClassName={({ isActive }) =>
                 cn(
                   "text-base leading-6 transition-all text-black",
