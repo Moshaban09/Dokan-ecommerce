@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/use-language";
 import appleIconImg from "@/assets/apple_icon.png";
-import iphoneImg from "@/assets/hero_endframe.png";
-import ps5Img from "@/assets/ps5_hero.png";
-import cameraImg from "@/assets/camera_hero.png";
-import laptopImg from "@/assets/laptop_hero.png";
-import sneakerImg from "@/assets/sneakers_hero.png";
+import iphoneImg from "@/assets/hero_endframe_cutout.webp";
+import ps5Img from "@/assets/ps5_hero_cutout.webp";
+import cameraImg from "@/assets/camera_hero_cutout.webp";
+import laptopImg from "@/assets/laptop_hero_cutout.webp";
+import sneakerImg from "@/assets/sneakers_hero_cutout.webp";
 
 const BrandIcon = ({ type }: { type?: string }) => {
   switch (type) {
@@ -92,7 +92,7 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
 
   return (
     <div className="flex-1 lg:pt-10">
-      <div className="relative bg-black w-full overflow-hidden group h-115 md:h-105 lg:h-110 mx-auto lg:max-w-268 rounded-lg border-0">
+      <div className="relative bg-primary-dark w-full overflow-hidden group h-115 md:h-105 lg:h-110 mx-auto lg:max-w-268 rounded-lg border-0">
         <div
           className="flex h-full transition-transform duration-700 ease-in-out"
           style={{
@@ -103,7 +103,7 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
             <div
               key={slide.id}
               className={cn(
-                "min-w-full h-full bg-black flex flex-col items-center justify-center lg:justify-between px-6 lg:px-16 gap-6 lg:gap-0 pt-10 pb-16 lg:py-0",
+                "min-w-full h-full bg-linear-to-br from-primary to-primary-dark flex flex-col items-center justify-center lg:justify-between px-6 lg:px-16 gap-6 lg:gap-0 pt-10 pb-16 lg:py-0",
                 isRtl ? "lg:flex-row-reverse" : "lg:flex-row"
               )}
             >
@@ -141,13 +141,13 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
                 </div>
               </div>
 
-              <div className="relative flex-1 w-full lg:w-1/2 flex items-center justify-center pt-4 lg:pt-10 overflow-hidden">
+              <div className="relative flex-1 w-full lg:w-1/2 h-full flex items-center justify-center overflow-hidden">
+                <div className="absolute size-56 lg:size-80 rounded-full bg-white/10 blur-2xl" />
                 <img
                   src={slide.image}
                   alt={slide.title}
                   className={cn(
-                    "max-h-[250px] md:max-h-full w-auto lg:w-full object-contain mix-blend-screen transition-transform duration-500 group-hover:scale-105",
-                    isRtl ? "lg:object-left" : "lg:object-right"
+                    "relative h-full max-h-[200px] md:max-h-[280px] lg:max-h-[320px] w-auto max-w-full object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:scale-105",
                   )}
                 />
               </div>
@@ -164,7 +164,7 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
               className={cn(
                 "w-3 h-3 rounded-full transition-all duration-300 border cursor-pointer",
                 i === current
-                  ? "!bg-primary !border-primary-foreground scale-125 shadow-[0_0_10px_rgba(46,158,124,0.6)]"
+                  ? "!bg-white !border-white scale-125"
                   : "bg-white/30 border-transparent hover:bg-white/60",
               )}
               aria-label={`Go to slide ${i + 1}`}
