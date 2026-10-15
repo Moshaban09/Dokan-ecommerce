@@ -22,7 +22,7 @@ export const MainLayout = () => {
       <Footer />
       <BackToTop />
       <MiniCart />
-      <Toaster position="top-center" richColors />
+      <Toaster position="top-center" richColors closeButton />
     </div>
   );
 };
