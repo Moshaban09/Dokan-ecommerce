@@ -74,7 +74,7 @@ export const ProductCard = ({ product, className, variant = "default", forceShow
 
         {}
         {product.discountPercentage > 0 && (
-          <Badge className="absolute top-3 inset-s-3 bg-primary hover:bg-primary text-white text-[12px] font-normal px-3 py-1 rounded-lg border-none">
+          <Badge className="absolute top-3 inset-s-3 bg-sale hover:bg-sale text-white text-[12px] font-medium px-3 py-1 rounded-lg border-none">
             -{Math.round(product.discountPercentage)}%
           </Badge>
         )}
@@ -131,7 +131,7 @@ export const ProductCard = ({ product, className, variant = "default", forceShow
         )}>
           <Button
             onClick={handleAddToCart}
-            className="w-full bg-black hover:bg-black text-white rounded-none rounded-b-lg h-12 text-[16px] font-medium font-poppins cursor-pointer flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg active:scale-[0.98]"
+            className="w-full bg-primary hover:bg-primary-dark text-white rounded-none rounded-b-lg h-12 text-[16px] font-medium font-poppins cursor-pointer flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg active:scale-[0.98]"
             size="default"
           >
             <ShoppingCart size={20} strokeWidth={1.5} /> {t("products.addToCart")}

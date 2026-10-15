@@ -1,6 +1,7 @@
 import { SendHorizontal } from "lucide-react";
 import { Link } from "react-router";
 import { SocialIcons } from "@/components/common/SocialIcons";
+import { LogoMark } from "@/components/common/LogoMark";
 import { useTranslation } from "react-i18next";
 import qrCodeImg from "@/assets/Qrcode 1.png";
 import googlePlayImg from "@/assets/google-play-.png";
@@ -10,10 +11,13 @@ import { env } from "@/lib/env";
 export const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="bg-[#050505] text-primary-foreground mt-10 md:mt-20 pt-16 md:pt-24 border-t border-white/5">
+    <footer className="bg-black text-primary-foreground mt-10 md:mt-20 pt-16 md:pt-24 border-t border-white/5">
       <div className="container mx-auto px-4 pb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8 text-start">
         <div className="col-span-2 md:col-span-1 space-y-6">
-          <h2 className="text-2xl font-bold font-inter tracking-wider">{t("nav.brand")}</h2>
+          <h2 className="flex items-center gap-2 text-2xl font-bold font-inter tracking-wider">
+            <LogoMark />
+            {t("nav.brand")}
+          </h2>
           <div className="space-y-4">
             <p className="text-xl font-medium font-poppins">{t("footer.subscribe")}</p>
             <p className="text-sm font-normal font-poppins text-zinc-400">

@@ -111,7 +111,7 @@ export const UserMenu = () => {
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 py-2 px-3 rounded-lg text-primary hover:bg-red-50 transition-colors font-medium text-start cursor-pointer"
+            className="flex items-center gap-3 py-2 px-3 rounded-lg text-primary hover:bg-primary/10 transition-colors font-medium text-start cursor-pointer"
           >
             <LogOut size={18} strokeWidth={2} />
             <span className="text-sm">{t("nav.logout")}</span>

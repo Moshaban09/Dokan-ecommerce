@@ -132,7 +132,7 @@ export const NewArrivalSection = () => {
 
         {}
         {medium && (
-          <div className="md:col-span-2 relative rounded-lg overflow-hidden bg-[#0D0D0D] group h-71">
+          <div className="md:col-span-2 relative rounded-lg overflow-hidden bg-black group h-71">
             <img
               src={medium.thumbnail}
               alt={medium.title}

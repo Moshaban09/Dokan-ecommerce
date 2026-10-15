@@ -5,7 +5,7 @@ import authImg from "@/assets/auth.png";
 export function AuthLayout() {
   return (
     <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-[100px] xl:gap-[129px] min-h-[calc(100vh-142px)] pt-15 pb-20 lg:pt-15 lg:pb-35 overflow-x-hidden">
-      <div className="hidden lg:flex lg:w-1/2 xl:w-[805px] bg-[#CBE4E8] rounded-e-sm overflow-hidden items-end justify-center h-auto">
+      <div className="hidden lg:flex lg:w-1/2 xl:w-[805px] bg-[#D9EBE3] rounded-e-sm overflow-hidden items-end justify-center h-auto">
         <img
           src={authImg}
           alt="Authentication"

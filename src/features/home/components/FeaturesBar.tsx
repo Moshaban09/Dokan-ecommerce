@@ -34,7 +34,7 @@ export const FeaturesBar = () => {
               index === 2 && "md:col-span-2 lg:col-span-1"
             )}
           >
-            <div className="w-20 h-20 rounded-full bg-[#2F2E30]/30 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
+            <div className="w-20 h-20 rounded-full bg-black/20 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
               <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center">
                 <Icon size={32} className="text-white" strokeWidth={1.5} />
               </div>

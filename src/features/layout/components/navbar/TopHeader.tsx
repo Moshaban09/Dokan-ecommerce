@@ -5,7 +5,7 @@ export const TopHeader = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-black text-white text-[14px] py-3 px-4">
+    <div className="bg-primary text-white text-[14px] py-3 px-4">
       <div className="max-w-360 mx-auto flex items-center justify-center relative">
         <div className="flex items-center gap-2">
           <p className="hidden sm:block text-white/90">

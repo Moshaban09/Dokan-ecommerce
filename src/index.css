@@ -10,7 +10,10 @@
   --font-sans: "Geist Variable", "Inter", "system-ui", "sans-serif";
   --font-cairo: "Cairo", "sans-serif";
   --font-poppins: "Poppins", sans-serif;
-  --color-primary: #DB4444; 
+  --color-primary-dark: #0B4435;
+  --color-sale: #C8512B;
+  --color-sand: #EFE6D6;
+  --color-black: #1E2A25;
   --color-accent: oklch(0.7 0.15 150); 
 }
 
@@ -31,26 +34,26 @@ html {
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --border: oklch(0.922 0 0);
+  --background: #FBF8F3;
+  --foreground: #1E2A25;
+  --border: #E7DFD0;
   --radius: 0.625rem;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #DB4444;
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: #F5F5F5;
+  --primary: #0F5A46;
+  --primary-foreground: #F4EFE6;
+  --secondary: #F3EDE1;
   --secondary-foreground: oklch(0.205 0 0);
-  --success: #00FF66;
+  --success: #1D9E75;
   --success-foreground: oklch(1 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --input: oklch(0.922 0 0);
+  --destructive: #C0392B;
+  --input: #E7DFD0;
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -69,9 +72,9 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: oklch(0.15 0 0);
-    --foreground: oklch(0.98 0 0);
-    --border: oklch(0.25 0 0);
+    --background: #121A17;
+    --foreground: #F4EFE6;
+    --border: #2A3731;
   }
 }
 
@@ -179,11 +182,11 @@ body {
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: #DB4444;
+  --primary: #2E9E7C;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
-  --success: #00FF66;
+  --success: #1D9E75;
   --success-foreground: oklch(1 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);

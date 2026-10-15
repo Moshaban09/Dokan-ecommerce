@@ -112,7 +112,7 @@ export default function AboutPage() {
         </div>
 
         <div className="w-full lg:w-1/2 relative lg:-me-[135px]">
-          <div className="aspect-[705/609] w-full bg-[#EB7BA3] rounded-s-[4px] overflow-hidden flex items-center justify-center">
+          <div className="aspect-[705/609] w-full bg-[#D9EBE3] rounded-s-[4px] overflow-hidden flex items-center justify-center">
             <img
               src={aboutStoryImg}
               alt="Our Story"

@@ -105,8 +105,8 @@ export const CountdownTimer = ({
           </div>
           {index < array.length - 1 && (
             <div className="flex flex-col gap-2 h-7.5 justify-center mt-auto mb-1 px-1">
-              <div className="w-1 h-1 rounded-full bg-[#E07575]" />
-              <div className="w-1 h-1 rounded-full bg-[#E07575]" />
+              <div className="w-1 h-1 rounded-full bg-sale/70" />
+              <div className="w-1 h-1 rounded-full bg-sale/70" />
             </div>
           )}
         </React.Fragment>

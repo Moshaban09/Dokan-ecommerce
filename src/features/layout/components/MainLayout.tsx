@@ -12,7 +12,7 @@ export const MainLayout = () => {
       <main className="flex-1 w-full relative">
         <Suspense fallback={
           <div className="absolute inset-0 flex items-center justify-center min-h-[50vh]">
-            <div className="w-8 h-8 border-4 border-gray-200 border-t-red-500 rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-gray-200 border-t-primary rounded-full animate-spin"></div>
           </div>
         }>
           <Outlet />

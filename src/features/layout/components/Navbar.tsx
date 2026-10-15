@@ -2,6 +2,7 @@ import { useAuth } from "@/features/auth";
 import { useCart } from "@/features/cart";
 import { useWishlist } from "@/features/wishlist";
 import { cn } from "@/lib/utils";
+import { LogoMark } from "@/components/common/LogoMark";
 import { Heart, LogOut, Menu, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
@@ -41,7 +42,8 @@ export const Navbar = () => {
       <div className="border-b border-black/10">
         <div className="max-w-360 mx-auto flex items-center justify-between px-2 md:px-4 h-23.5">
           <div className="flex items-center gap-4 md:gap-8 xl:gap-47.5">
-            <Link to="/" className="text-[24px] font-bold text-black shrink-0">
+            <Link to="/" className="flex items-center gap-2 text-[24px] font-bold text-black shrink-0">
+              <LogoMark />
               {t("nav.brand")}
             </Link>
 
@@ -71,7 +73,7 @@ export const Navbar = () => {
                 {wishlistCount > 0 && (
                   <span
                     key={wishlistCount}
-                    className="absolute top-0 inset-e-0 w-4.5 h-4.5 rounded-full bg-primary text-white text-[12px] flex items-center justify-center font-medium animate-badge-pop"
+                    className="absolute top-0 inset-e-0 w-4.5 h-4.5 rounded-full bg-sale text-white text-[12px] flex items-center justify-center font-medium animate-badge-pop"
                   >
                     {wishlistCount > 99 ? "99+" : wishlistCount}
                   </span>
@@ -87,7 +89,7 @@ export const Navbar = () => {
                 {cartCount > 0 && (
                   <span
                     key={cartCount}
-                    className="absolute top-0 inset-e-0 w-4.5 h-4.5 rounded-full bg-primary text-white text-[12px] flex items-center justify-center font-medium animate-badge-pop"
+                    className="absolute top-0 inset-e-0 w-4.5 h-4.5 rounded-full bg-sale text-white text-[12px] flex items-center justify-center font-medium animate-badge-pop"
                   >
                     {cartCount > 99 ? "99+" : cartCount}
                   </span>
