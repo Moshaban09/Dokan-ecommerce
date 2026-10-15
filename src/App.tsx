@@ -22,6 +22,9 @@ const CheckoutPage = lazy(() => import('./features/checkout/pages/CheckoutPage')
 const OrderSuccessPage = lazy(() => import('./features/checkout/pages/OrderSuccessPage'));
 const AboutPage = lazy(() => import('./features/misc/pages/AboutPage'));
 const ContactPage = lazy(() => import('./features/misc/pages/ContactPage'));
+const PrivacyPage = lazy(() => import('./features/misc/pages/PrivacyPage'));
+const TermsPage = lazy(() => import('./features/misc/pages/TermsPage'));
+const FaqPage = lazy(() => import('./features/misc/pages/FaqPage'));
 const NotFoundPage = lazy(() => import('./features/misc/pages/NotFoundPage'));
 
 const router = createBrowserRouter([
@@ -65,6 +68,18 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <AboutPage />
+      },
+      {
+        path: 'privacy',
+        element: <PrivacyPage />
+      },
+      {
+        path: 'terms',
+        element: <TermsPage />
+      },
+      {
+        path: 'faq',
+        element: <FaqPage />
       },
       {
         path: 'product/:id',

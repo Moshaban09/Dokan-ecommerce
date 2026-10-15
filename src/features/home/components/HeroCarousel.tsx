@@ -103,7 +103,7 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
             <div
               key={slide.id}
               className={cn(
-                "min-w-full h-full flex flex-col items-center justify-center lg:justify-between px-6 lg:px-16 gap-6 lg:gap-0 pt-10 pb-16 lg:py-0",
+                "min-w-full h-full bg-black flex flex-col items-center justify-center lg:justify-between px-6 lg:px-16 gap-6 lg:gap-0 pt-10 pb-16 lg:py-0",
                 isRtl ? "lg:flex-row-reverse" : "lg:flex-row"
               )}
             >
@@ -146,7 +146,7 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
                   src={slide.image}
                   alt={slide.title}
                   className={cn(
-                    "max-h-[250px] md:max-h-full w-auto lg:w-full object-contain transition-transform duration-500 group-hover:scale-105",
+                    "max-h-[250px] md:max-h-full w-auto lg:w-full object-contain mix-blend-screen transition-transform duration-500 group-hover:scale-105",
                     isRtl ? "lg:object-left" : "lg:object-right"
                   )}
                 />
@@ -164,7 +164,7 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
               className={cn(
                 "w-3 h-3 rounded-full transition-all duration-300 border cursor-pointer",
                 i === current
-                  ? "!bg-primary !border-primary-foreground scale-125 shadow-[0_0_10px_rgba(219,68,68,0.5)]"
+                  ? "!bg-primary !border-primary-foreground scale-125 shadow-[0_0_10px_rgba(46,158,124,0.6)]"
                   : "bg-white/30 border-transparent hover:bg-white/60",
               )}
               aria-label={`Go to slide ${i + 1}`}

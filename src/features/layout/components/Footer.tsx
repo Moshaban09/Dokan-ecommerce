@@ -85,6 +85,9 @@ export const Footer = () => {
           <h3 className="text-xl font-medium font-poppins">{t("footer.quickLink")}</h3>
           <ul className="space-y-4 text-sm font-normal font-poppins">
             {[
+              { key: "privacy", label: t("footer.privacyPolicy"), to: "/privacy" },
+              { key: "terms", label: t("footer.termsOfUse"), to: "/terms" },
+              { key: "faq", label: t("footer.faq"), to: "/faq" },
               { key: "contact", label: t("footer.contact"), to: "/contact" },
             ].map((item) => (
               <li key={item.key}>

@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import * as z from "zod";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { env } from "@/lib/env";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "common.required"),
@@ -67,7 +68,7 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-col gap-4 text-sm font-poppins text-black">
               <p>{t("contact.callToUs.desc")}</p>
-              <p>{t("contact.callToUs.phone")}</p>
+              <p>{t("contact.callToUs.phone", { phone: env.supportPhone })}</p>
             </div>
           </div>
 
@@ -85,7 +86,7 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-col gap-4 text-sm font-poppins text-black">
               <p>{t("contact.writeToUs.desc")}</p>
-              {t("contact.writeToUs.emails").split('\n').map((email, idx) => (
+              {t("contact.writeToUs.emails", { email: env.supportEmail }).split('\n').map((email, idx) => (
                 <p key={idx}>{email}</p>
               ))}
             </div>

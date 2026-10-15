@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ProductService } from "../api/product-service";
 import type { Product, CategoryItem } from "../types";
 import { ProductCard, ProductCardSkeleton } from "../components/ProductCard";
+import { ProductFilters } from "../components/ProductFilters";
+import { DEFAULT_PRODUCT_FILTERS, filterAndSortProducts, type ProductFilterState } from "../utils/filter-products";
 import { SectionLabel } from "@/components/common/SectionLabel";
 import { cn } from "@/lib/utils";
 import { useDocumentTitle } from "@/hooks/use-document-title";
@@ -22,6 +24,8 @@ export default function ProductsPage() {
   const [isProductsLoading, setIsProductsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
+  const [filters, setFilters] = useState<ProductFilterState>(DEFAULT_PRODUCT_FILTERS);
+  const visibleProducts = useMemo(() => filterAndSortProducts(products, filters), [products, filters]);
 
   const totalPages = Math.max(1, Math.ceil(totalProducts / PAGE_SIZE));
 
@@ -162,6 +166,13 @@ export default function ProductsPage() {
         <div className="flex-1 flex flex-col gap-8">
           <SectionLabel text={selectedCategory ? `${t("products.category.title")}: ${getTranslatedCategory(selectedCategory)}` : t("home.explore.label")} />
 
+          {!isProductsLoading && products.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <ProductFilters value={filters} onChange={setFilters} />
+              <p className="text-xs text-black/40">{t("products.filters.pageNote")}</p>
+            </div>
+          )}
+
           <div className="mt-2">
             {isProductsLoading ? (
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-7.5">
@@ -173,9 +184,13 @@ export default function ProductsPage() {
               <div className="py-20 text-center text-black/50 text-lg font-poppins">
                 {t("products.errors.noProductsInCategory")}
               </div>
+            ) : visibleProducts.length === 0 ? (
+              <div className="py-20 text-center text-black/50 text-lg font-poppins">
+                {t("products.filters.noResults")}
+              </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-7.5">
-                {products.map(product => (
+                {visibleProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>

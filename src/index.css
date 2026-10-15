@@ -70,13 +70,6 @@ html {
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #121A17;
-    --foreground: #F4EFE6;
-    --border: #2A3731;
-  }
-}
 
 * {
   border-color: var(--border);

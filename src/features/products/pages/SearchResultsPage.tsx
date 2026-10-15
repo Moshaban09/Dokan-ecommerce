@@ -1,12 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router";
 import { ProductService } from "../api/product-service";
 import { ProductCard } from "../components/ProductCard";
+import { ProductFilters } from "../components/ProductFilters";
 import type { Product } from "../types";
 import { Search, Loader2 } from "lucide-react";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { DEFAULT_PRODUCT_FILTERS, filterAndSortProducts, type ProductFilterState } from "../utils/filter-products";
 
 export default function SearchResultsPage() {
   const { t } = useTranslation();
@@ -16,6 +18,8 @@ export default function SearchResultsPage() {
   
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filters, setFilters] = useState<ProductFilterState>(DEFAULT_PRODUCT_FILTERS);
+  const visibleProducts = useMemo(() => filterAndSortProducts(products, filters), [products, filters]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -63,7 +67,7 @@ export default function SearchResultsPage() {
               </span>
             </div>
             <span className="px-3 py-1 bg-secondary rounded-full text-xs font-medium text-black whitespace-nowrap">
-              {t("products.search.itemsFound", { count: products.length })}
+              {t("products.search.itemsFound", { count: visibleProducts.length })}
             </span>
           </div>
         </div>
@@ -74,10 +78,19 @@ export default function SearchResultsPage() {
             <p>{t("products.search.loading")}</p>
           </div>
         ) : products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-7.5">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="flex flex-col gap-6 md:gap-8">
+            <ProductFilters value={filters} onChange={setFilters} />
+            {visibleProducts.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-7.5">
+                {visibleProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            ) : (
+              <div className="min-h-[30vh] flex items-center justify-center text-black/50 text-center">
+                {t("products.filters.noResults")}
+              </div>
+            )}
           </div>
         ) : (
           <div className="min-h-[40vh] flex flex-col items-center justify-center gap-6 text-center py-10">

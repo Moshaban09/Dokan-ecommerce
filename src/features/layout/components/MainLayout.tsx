@@ -4,10 +4,11 @@ import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { BackToTop } from "./BackToTop";
+import { MiniCart } from "@/features/cart";
 
 export const MainLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-1 w-full relative">
         <Suspense fallback={
@@ -20,6 +21,7 @@ export const MainLayout = () => {
       </main>
       <Footer />
       <BackToTop />
+      <MiniCart />
       <Toaster position="top-center" richColors />
     </div>
   );

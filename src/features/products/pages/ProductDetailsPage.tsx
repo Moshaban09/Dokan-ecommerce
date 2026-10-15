@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { SectionLabel } from "@/components/common/SectionLabel";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/features/cart";
+import { openMiniCart, useCart } from "@/features/cart";
 import { useWishlist } from "@/features/wishlist";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 import { cn } from "@/lib/utils";
@@ -151,13 +151,7 @@ export default function ProductDetailsPage() {
   const handleAddToCart = () => {
     if (isOutOfStock) return;
     addItem(product.id, quantity);
-    toast.success(t("products.addedToCart"), {
-      description: t("products.checkCart"),
-      action: {
-        label: t("products.viewCart"),
-        onClick: () => navigate("/cart"),
-      },
-    });
+    openMiniCart();
   };
 
   const translationKey = CATEGORY_TRANSLATION_MAP[product.category];

@@ -1,8 +1,27 @@
 import { useAuth } from "@/features/auth";
 import { supabase } from "@/lib/supabase";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { CartContextValue, CartItem } from "../types";
 import { CartContext } from "./cart-context";
+
+const COUPON_STORAGE_KEY = "applied_coupon_code";
+
+const readStoredCoupon = (): string | null => {
+  try {
+    return sessionStorage.getItem(COUPON_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const writeStoredCoupon = (code: string | null) => {
+  try {
+    if (code) sessionStorage.setItem(COUPON_STORAGE_KEY, code);
+    else sessionStorage.removeItem(COUPON_STORAGE_KEY);
+  } catch {
+    // sessionStorage unavailable: the coupon simply will not persist
+  }
+};
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const { user, isAuthenticated } = useAuth();
@@ -14,8 +33,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [isCouponApplied, setIsCouponApplied] = useState(false);
-  const [appliedCouponCode, setAppliedCouponCode] = useState<string | null>(null);
+  const [appliedCouponCode, setAppliedCouponCode] = useState<string | null>(readStoredCoupon);
+  const [isCouponApplied, setIsCouponApplied] = useState(() => readStoredCoupon() !== null);
+  const wasAuthenticatedRef = useRef(!!isAuthenticated && !!user?.id);
 
   const isGuest = !isAuthenticated || !user?.id;
 
@@ -24,10 +44,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       // Intentional: clear cart state on logout.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setItems([]);
-      setIsCouponApplied(false);
-      setAppliedCouponCode(null);
+      // Only clear the coupon on an actual logout, so a guest's coupon survives a page refresh.
+      if (wasAuthenticatedRef.current) {
+        setIsCouponApplied(false);
+        setAppliedCouponCode(null);
+      }
     }
+    wasAuthenticatedRef.current = !isGuest;
   }, [isGuest]);
+
+  useEffect(() => {
+    writeStoredCoupon(appliedCouponCode);
+  }, [appliedCouponCode]);
 
   useEffect(() => {
     if (isGuest) localStorage.setItem("cart_items", JSON.stringify(items));

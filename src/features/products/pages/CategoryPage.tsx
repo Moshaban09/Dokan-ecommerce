@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 import { useParams, useNavigate } from "react-router";
 import { ProductService } from "../api/product-service";
@@ -10,6 +10,8 @@ import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Loader2 } from "lucide-react";
 import { CATEGORY_TRANSLATION_MAP } from "../constants";
+import { ProductFilters } from "../components/ProductFilters";
+import { DEFAULT_PRODUCT_FILTERS, filterAndSortProducts, type ProductFilterState } from "../utils/filter-products";
 
 export default function CategoryPage() {
   const { t } = useTranslation();
@@ -28,6 +30,8 @@ export default function CategoryPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState<ProductFilterState>(DEFAULT_PRODUCT_FILTERS);
+  const visibleProducts = useMemo(() => filterAndSortProducts(products, filters), [products, filters]);
 
   useEffect(() => {
     if (!categoryName) return;
@@ -82,10 +86,19 @@ export default function CategoryPage() {
           {t("products.category.noProducts")}
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-6 md:gap-7.5">
-          {products.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        <div className="flex flex-col gap-6 md:gap-8">
+          <ProductFilters value={filters} onChange={setFilters} />
+          {visibleProducts.length === 0 ? (
+            <div className="min-h-[20vh] flex items-center justify-center text-black/50">
+              {t("products.filters.noResults")}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-6 md:gap-7.5">
+              {visibleProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

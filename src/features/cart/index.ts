@@ -4,3 +4,5 @@ export * from './context/cart-context';
 export * from './context/cart-provider';
 export * from './types';
 export * from './components/CouponSection';
+export * from './components/MiniCart';
+export * from './mini-cart-events';

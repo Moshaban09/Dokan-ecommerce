@@ -19,7 +19,7 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { count: cartCount } = useCart();
   const { count: wishlistCount } = useWishlist();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, isLoading, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -98,6 +98,8 @@ export const Navbar = () => {
 
               {isAuthenticated ? (
                 <UserMenu />
+              ) : isLoading ? (
+                <div className="w-16 h-6 mx-2" aria-hidden="true" />
               ) : (
                 <Link
                   to="/login"
@@ -152,6 +154,8 @@ export const Navbar = () => {
                 <LogOut size={20} />
                 {t("nav.logout")} ({user?.name})
               </button>
+            ) : isLoading ? (
+              <div className="w-16 h-6 mx-5" aria-hidden="true" />
             ) : (
               <NavLink
                 to="/login"

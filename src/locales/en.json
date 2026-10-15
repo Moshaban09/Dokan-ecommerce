@@ -1,4 +1,84 @@
 {
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: October 2026",
+      "intro": "This policy explains what personal information Dokan collects when you use our store, how we use it, and the choices you have.",
+      "collect": {
+        "title": "Information We Collect",
+        "body": "We collect the details you give us, such as your name, email address, phone number, delivery address and order history. We also collect basic technical data, such as device type and pages viewed, to keep the store running smoothly."
+      },
+      "use": {
+        "title": "How We Use Your Information",
+        "body": "We use your information to process orders, deliver purchases, send order updates, answer support requests and, if you opt in, send offers. We do not sell your personal data."
+      },
+      "storage": {
+        "title": "Data Storage",
+        "body": "Your account and order data are stored securely using Supabase, a hosted database and authentication service. Access is limited to the systems and staff that need it to run the store."
+      },
+      "cookies": {
+        "title": "Cookies and Local Storage",
+        "body": "We use cookies and browser storage to keep you signed in, remember your cart, wishlist and language, and keep applied coupons during your session. You can clear these at any time in your browser settings, although some features may stop working."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "body": "You can access, correct or delete your personal information, withdraw marketing consent and ask questions about how your data is handled. Contact our support team and we will respond within a reasonable time."
+      }
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "lastUpdated": "Last updated: October 2026",
+      "intro": "By using the Dokan website and placing an order, you agree to the terms below. Please read them carefully.",
+      "orders": {
+        "title": "Orders",
+        "body": "An order is confirmed only after we receive payment and send a confirmation. We may cancel orders due to limited stock, pricing errors or suspected fraud, and any amount you paid will be refunded."
+      },
+      "pricing": {
+        "title": "Pricing and Payment",
+        "body": "All prices are shown in the store currency and may include applicable taxes. Discounts and coupons cannot be combined unless stated, and coupons are valid only for the period and conditions shown."
+      },
+      "returns": {
+        "title": "Returns and Refunds",
+        "body": "Most items can be returned within 14 days of delivery if they are unused and in their original packaging. Refunds are issued to the original payment method after the item has been checked."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "body": "Dokan is not liable for indirect or incidental losses arising from the use of the store. Our total liability for any order is limited to the amount you paid for it."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "intro": "Quick answers to the questions we hear most often. Can't find what you need? Visit our Contact page.",
+      "shipping": {
+        "q": "How long does delivery take?",
+        "a": "Standard delivery usually takes 3 to 5 business days. Express delivery is available at checkout for faster arrival in selected areas."
+      },
+      "returns": {
+        "q": "How do I return an item?",
+        "a": "Go to My Orders, select the item and choose Return. Items must be unused and in their original packaging within 14 days of delivery."
+      },
+      "payment": {
+        "q": "Which payment methods do you accept?",
+        "a": "We accept major credit and debit cards and the other payment methods shown at checkout. Your payment is processed securely."
+      },
+      "coupons": {
+        "q": "How do I use a coupon code?",
+        "a": "Enter your code in the coupon field on the cart page and select Apply. Coupons are valid for one order unless stated otherwise, and stay applied until you remove them or clear your cart."
+      },
+      "account": {
+        "q": "Do I need an account to shop?",
+        "a": "You can browse as a guest, but you need an account to check out, save your wishlist and view your order history."
+      },
+      "tracking": {
+        "q": "How can I track my order?",
+        "a": "Sign in and open My Orders to see the current status of each purchase. You will also receive updates by email."
+      },
+      "cancel": {
+        "q": "Can I cancel my order?",
+        "a": "You can cancel an order from My Orders while it has not shipped yet. Once it has shipped, please use the return process instead."
+      }
+    }
+  },
   "nav": {
     "home": "Home",
     "contact": "Contact",
@@ -125,6 +205,23 @@
     }
   },
   "products": {
+    "filters": {
+      "sortLabel": "Sort by",
+      "sort": {
+        "featured": "Featured",
+        "priceAsc": "Price: low to high",
+        "priceDesc": "Price: high to low",
+        "rating": "Highest rated",
+        "discount": "Biggest discount"
+      },
+      "priceRange": "Price range",
+      "minPrice": "Min price",
+      "maxPrice": "Max price",
+      "onSaleOnly": "On sale only",
+      "reset": "Reset",
+      "noResults": "No products match your filters.",
+      "pageNote": "Filters apply to the products loaded on this page."
+    },
     "allProducts": "All Products",
     "category": {
       "title": "Category",
@@ -139,6 +236,7 @@
     "viewCart": "View Cart",
     "checkCart": "Check your cart to checkout",
     "quickView": "Quick view",
+    "inCart": "In cart",
     "details": {
       "availability": "Availability:",
       "inStock": "In Stock",
@@ -308,12 +406,12 @@
     "callToUs": {
       "title": "Call To Us",
       "desc": "We are available 24/7, 7 days a week.",
-      "phone": "Phone: +8801611112222"
+      "phone": "Phone: {{phone}}"
     },
     "writeToUs": {
       "title": "Write To Us",
       "desc": "Fill out our form and we will contact you within 24 hours.",
-      "emails": "Emails: customer@dokan.com\nEmails: support@dokan.com"
+      "emails": "Emails: customer@dokan.com\nEmails: {{email}}"
     },
     "form": {
       "name": "Your Name",

@@ -38,3 +38,4 @@ coverage
 .temp
 CONVERSATION_CONTEXT.md
 .agents/
+.claude/
