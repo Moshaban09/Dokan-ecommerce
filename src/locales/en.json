@@ -100,29 +100,29 @@
   },
   "home": {
     "heroSlides": {
-      "iphone": {
-        "brand": "iPhone 14 Series",
-        "title": "Up to 10%\noff Voucher",
+      "phones": {
+        "brand": "Latest Smartphones",
+        "title": "Flagship Power\nIn Your Pocket",
         "cta": "Shop Now"
       },
-      "ps5": {
-        "brand": "PlayStation 5",
-        "title": "The Ultimate\nGaming Console",
+      "laptops": {
+        "brand": "Premium Laptops",
+        "title": "Work Faster\nCreate Better",
         "cta": "Shop Now"
       },
-      "camera": {
-        "brand": "Canon EOS R5",
-        "title": "Pro Quality\nPhotography",
+      "watches": {
+        "brand": "Luxury Watches",
+        "title": "Timeless Style\nOn Your Wrist",
         "cta": "Shop Now"
       },
-      "laptop": {
-        "brand": "ASUS ROG Zephyrus",
-        "title": "Next Gen\nGaming Laptops",
+      "shoes": {
+        "brand": "Sneakers Collection",
+        "title": "Step Out\nIn Style",
         "cta": "Shop Now"
       },
-      "fashion": {
-        "brand": "Dokan Fashion",
-        "title": "Modern Style\n& Comfort",
+      "audio": {
+        "brand": "Wireless Audio",
+        "title": "Pure Sound\nZero Wires",
         "cta": "Shop Now"
       }
     },

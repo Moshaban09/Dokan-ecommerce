@@ -1,33 +1,38 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { ArrowRight, Gamepad2, Camera, Laptop, Shirt } from "lucide-react";
+import {
+  ArrowRight,
+  Footprints,
+  Headphones,
+  Laptop,
+  Smartphone,
+  Watch,
+} from "lucide-react";
 import type { Slide } from "../types";
+import type { Product } from "@/features/products/types";
+import { ProductService } from "@/features/products";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/use-language";
-import appleIconImg from "@/assets/apple_icon.png";
-import iphoneImg from "@/assets/hero_endframe_cutout.webp";
-import ps5Img from "@/assets/ps5_hero_cutout.webp";
-import cameraImg from "@/assets/camera_hero_cutout.webp";
-import laptopImg from "@/assets/laptop_hero_cutout.webp";
-import sneakerImg from "@/assets/sneakers_hero_cutout.webp";
 
-const BrandIcon = ({ type }: { type?: string }) => {
-  switch (type) {
-    case "apple":
-      return <img src={appleIconImg} alt="Apple" className="w-5 h-5 object-contain" />;
-    case "sony":
-      return <Gamepad2 className="w-5 h-5 text-white" />;
-    case "canon":
-      return <Camera className="w-5 h-5 text-white" />;
-    case "laptop":
-      return <Laptop className="w-5 h-5 text-white" />;
-    case "fashion":
-      return <Shirt className="w-5 h-5 text-white" />;
-    default:
-      return null;
-  }
-};
+const BRAND_ICONS = {
+  phones: Smartphone,
+  laptops: Laptop,
+  watches: Watch,
+  shoes: Footprints,
+  audio: Headphones,
+} as const;
+
+const SLIDE_PRODUCTS: { key: Slide["brandType"]; productId: number }[] = [
+  { key: "phones", productId: 123 },
+  { key: "laptops", productId: 78 },
+  { key: "watches", productId: 98 },
+  { key: "shoes", productId: 88 },
+  { key: "audio", productId: 101 },
+];
+
+const productCache = new Map<number, Product>();
 
 interface HeroCarouselProps {
   slides?: Slide[];
@@ -37,51 +42,42 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
   const { t } = useTranslation();
   const { isRtl } = useLanguage();
   const [current, setCurrent] = useState(0);
+  const [products, setProducts] = useState<Record<number, Product>>(() =>
+    Object.fromEntries(productCache),
+  );
 
-  const defaultSlides: Slide[] = [
-    {
-      id: 1,
-      brand: t("home.heroSlides.iphone.brand"),
-      brandType: "apple",
-      title: t("home.heroSlides.iphone.title"),
-      cta: t("home.heroSlides.iphone.cta"),
-      image: iphoneImg,
-    },
-    {
-      id: 2,
-      brand: t("home.heroSlides.ps5.brand"),
-      brandType: "sony",
-      title: t("home.heroSlides.ps5.title"),
-      cta: t("home.heroSlides.ps5.cta"),
-      image: ps5Img,
-    },
-    {
-      id: 3,
-      brand: t("home.heroSlides.camera.brand"),
-      brandType: "canon",
-      title: t("home.heroSlides.camera.title"),
-      cta: t("home.heroSlides.camera.cta"),
-      image: cameraImg,
-    },
-    {
-      id: 4,
-      brand: t("home.heroSlides.laptop.brand"),
-      brandType: "laptop",
-      title: t("home.heroSlides.laptop.title"),
-      cta: t("home.heroSlides.laptop.cta"),
-      image: laptopImg,
-    },
-    {
-      id: 5,
-      brand: t("home.heroSlides.fashion.brand"),
-      brandType: "fashion",
-      title: t("home.heroSlides.fashion.title"),
-      cta: t("home.heroSlides.fashion.cta"),
-      image: sneakerImg,
-    },
-  ];
+  const defaultSlides: Slide[] = SLIDE_PRODUCTS.map(({ key, productId }, i) => ({
+    id: i + 1,
+    productId,
+    brandType: key,
+    brand: t(`home.heroSlides.${key}.brand`),
+    title: t(`home.heroSlides.${key}.title`),
+    cta: t(`home.heroSlides.${key}.cta`),
+  }));
 
   const activeSlides = slides || defaultSlides;
+
+  useEffect(() => {
+    let ignore = false;
+    const missing = activeSlides
+      .map((s) => s.productId)
+      .filter((id) => !productCache.has(id));
+    if (missing.length === 0) return;
+
+    Promise.allSettled(
+      missing.map((id) => ProductService.getProductById(id)),
+    ).then((results) => {
+      results.forEach((r) => {
+        if (r.status === "fulfilled") productCache.set(r.value.id, r.value);
+      });
+      if (!ignore) setProducts(Object.fromEntries(productCache));
+    });
+
+    return () => {
+      ignore = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -96,57 +92,70 @@ export const HeroCarousel = ({ slides }: HeroCarouselProps) => {
         <div
           className="flex h-full transition-transform duration-700 ease-in-out"
           style={{
-            transform: `translateX(${isRtl ? (current * 100) : -(current * 100)}%)`
+            transform: `translateX(${isRtl ? current * 100 : -(current * 100)}%)`,
           }}
         >
-          {activeSlides.map((slide) => (
-            <div
-              key={slide.id}
-              className={cn(
-                "min-w-full h-full bg-linear-to-br from-sand to-[#F8F3E9] flex flex-col items-center justify-center lg:justify-between px-6 lg:px-16 gap-3 lg:gap-0 pt-6 pb-20 lg:py-0",
-                isRtl ? "lg:flex-row-reverse" : "lg:flex-row"
-              )}
-            >
-              <div className={cn(
-                "flex flex-col gap-3 lg:gap-5 text-black max-w-lg z-10 text-center items-center shrink-0",
-                isRtl ? "lg:text-right lg:items-end" : "lg:text-left lg:items-start"
-              )}>
-                <div className="flex items-center gap-3">
-                  <span className="size-9 rounded-full bg-primary flex items-center justify-center">
-                    <BrandIcon type={slide.brandType} />
-                  </span>
-                  <span className="font-poppins font-medium text-sm lg:text-base leading-6 text-primary">
-                    {slide.brand}
-                  </span>
-                </div>
-                <h2 className="font-inter font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight lg:leading-[1.15] whitespace-pre-line">
-                  {slide.title}
-                </h2>
-                <Link
-                  to="/products"
-                  className="group/btn mt-1 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary-dark text-white font-poppins font-medium text-sm lg:text-base px-6 py-3 transition-colors"
-                >
-                  {slide.cta}
-                  <ArrowRight
-                    size={18}
-                    className={cn(
-                      "transition-transform duration-300 group-hover/btn:translate-x-1",
-                      isRtl && "rotate-180 group-hover/btn:-translate-x-1"
-                    )}
-                  />
-                </Link>
-              </div>
+          {activeSlides.map((slide) => {
+            const Icon = BRAND_ICONS[slide.brandType];
+            const product = products[slide.productId];
 
-              <div className="relative flex-1 w-full lg:w-1/2 h-full flex items-center justify-center">
-                <div className="absolute size-44 md:size-64 lg:size-80 rounded-full bg-white shadow-[0_20px_60px_rgba(15,90,70,0.12)]" />
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="relative h-full max-h-[160px] md:max-h-[260px] lg:max-h-[330px] w-auto max-w-[85%] object-contain drop-shadow-[0_16px_20px_rgba(30,42,37,0.25)] transition-transform duration-500 group-hover:scale-105"
-                />
+            return (
+              <div
+                key={slide.id}
+                className={cn(
+                  "min-w-full h-full bg-linear-to-br from-sand to-[#F8F3E9] flex flex-col items-center justify-center lg:justify-between px-6 lg:px-16 gap-3 lg:gap-0 pt-6 pb-20 lg:py-0",
+                  isRtl ? "lg:flex-row-reverse" : "lg:flex-row",
+                )}
+              >
+                <div
+                  className={cn(
+                    "flex flex-col gap-3 lg:gap-5 text-black max-w-lg z-10 text-center items-center shrink-0",
+                    isRtl
+                      ? "lg:text-right lg:items-end"
+                      : "lg:text-left lg:items-start",
+                  )}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="size-9 rounded-full bg-primary text-white flex items-center justify-center">
+                      <Icon size={18} />
+                    </span>
+                    <span className="font-poppins font-medium text-sm lg:text-base leading-6 text-primary">
+                      {slide.brand}
+                    </span>
+                  </div>
+                  <h2 className="font-inter font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight lg:leading-[1.15] whitespace-pre-line">
+                    {slide.title}
+                  </h2>
+                  <Link
+                    to="/products"
+                    className="group/btn mt-1 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary-dark text-white font-poppins font-medium text-sm lg:text-base px-6 py-3 transition-colors"
+                  >
+                    {slide.cta}
+                    <ArrowRight
+                      size={18}
+                      className={cn(
+                        "transition-transform duration-300 group-hover/btn:translate-x-1",
+                        isRtl && "rotate-180 group-hover/btn:-translate-x-1",
+                      )}
+                    />
+                  </Link>
+                </div>
+
+                <div className="relative flex-1 w-full lg:w-1/2 h-full flex items-center justify-center">
+                  <div className="absolute size-44 md:size-64 lg:size-80 rounded-full bg-white shadow-[0_20px_60px_rgba(15,90,70,0.12)]" />
+                  {product ? (
+                    <img
+                      src={product.thumbnail}
+                      alt={product.title}
+                      className="relative size-30 md:size-44 lg:size-56 object-contain drop-shadow-[0_12px_14px_rgba(30,42,37,0.22)] transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <Skeleton className="relative size-30 md:size-44 lg:size-56 rounded-full bg-sand" />
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="absolute bottom-5 inset-x-0 flex justify-center z-20">

@@ -1,8 +1,8 @@
 export interface Slide {
   id: number;
+  productId: number;
   brand: string;
-  brandType?: "apple" | "sony" | "canon" | "laptop" | "fashion";
+  brandType: "phones" | "laptops" | "watches" | "shoes" | "audio";
   title: string;
   cta: string;
-  image: string;
 }
