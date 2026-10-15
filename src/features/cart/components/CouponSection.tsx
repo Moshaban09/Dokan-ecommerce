@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useAuth } from "@/features/auth";
 import { useTranslation } from "react-i18next";
+import { env } from "@/lib/env";
 
 interface CouponSectionProps {
   isCouponApplied: boolean;
@@ -25,7 +26,7 @@ export const CouponSection = ({
 
   const userCoupon = user?.name
     ? user.name.trim().split(" ")[0].toUpperCase()
-    : "DISCOUNT10";
+    : env.defaultCoupon;
 
   const handleApplyCoupon = () => {
     if (!couponCode.trim()) {

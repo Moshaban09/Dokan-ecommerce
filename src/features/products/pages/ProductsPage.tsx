@@ -9,8 +9,9 @@ import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CATEGORY_TRANSLATION_MAP } from "../constants";
+import { env } from "@/lib/env";
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = env.productsPageSize;
 
 export default function ProductsPage() {
   const { t } = useTranslation();
@@ -232,7 +233,6 @@ export default function ProductsPage() {
                 from: (currentPage - 1) * PAGE_SIZE + 1,
                 to: Math.min(currentPage * PAGE_SIZE, totalProducts),
                 total: totalProducts,
-                defaultValue: `Showing ${(currentPage - 1) * PAGE_SIZE + 1}–${Math.min(currentPage * PAGE_SIZE, totalProducts)} of ${totalProducts} products`
               })}
             </p>
           )}

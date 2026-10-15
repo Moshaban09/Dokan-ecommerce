@@ -32,32 +32,43 @@ Dokan is a modern, high-performance ecommerce application built with **React 19*
    git clone [repository-url]
    ```
 
-2. **Install dependencies**:
+2. **Use Node.js 20 or newer** (see `.nvmrc`):
+   ```bash
+   nvm use
+   ```
+
+3. **Install dependencies**:
    ```bash
    npm install
    ```
 
-3. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Configure Environment Variables**:
+4. **Configure environment variables** (see [Environment variables](#environment-variables)):
    Copy `.env.example` to `.env.local` and add your Supabase credentials:
    ```bash
    VITE_SUPABASE_URL=your_project_url
    VITE_SUPABASE_ANON_KEY=your_anon_key
    ```
 
-4. **Run the development server**:
+5. **Run the development server**:
    ```bash
    npm run dev
    ```
 
-5. **Build for production**:
+6. **Type-check, build for production, and preview the build**:
    ```bash
+   npm run typecheck
    npm run build
+   npm run preview
    ```
+
+## 🔐 Environment variables
+
+All configuration lives in `.env.example`, which lists every variable the app reads.
+
+- **Local development**: copy `.env.example` to `.env.local` and fill in your values. `.env.local` is git-ignored.
+- **Production (Vercel)**: set the same variables in the Vercel dashboard under *Project Settings > Environment Variables*. Vercel does not read your local `.env` files, so the production build will not work without them.
+
+> **Warning:** Every variable prefixed with `VITE_` is compiled into the client-side JavaScript bundle and is visible to anyone who loads the site. Never put secrets (service-role keys, database URLs, private API keys, payment secrets) in `VITE_` variables. Server-only secrets such as `SUPABASE_SECRET_KEY` and `SUPABASE_DB_URL` must never be prefixed with `VITE_` and must never be committed.
 
 ## 📄 License
 

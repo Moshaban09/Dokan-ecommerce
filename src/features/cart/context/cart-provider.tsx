@@ -21,6 +21,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (isGuest) {
+      // Intentional: clear cart state on logout.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setItems([]);
       setIsCouponApplied(false);
       setAppliedCouponCode(null);

@@ -8,6 +8,7 @@ import * as z from "zod";
 import { toast } from "sonner";
 import { useAuth } from "../hooks/use-auth";
 import { useTranslation } from "react-i18next";
+import { getSafeRedirect, withRedirect } from "@/lib/safe-redirect";
 
 const loginSchema = z.object({
   email: z.string().trim().email("validation.emailInvalid"),
@@ -22,7 +23,7 @@ export default function LoginPage() {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
+  const redirect = getSafeRedirect(searchParams.get("redirect"));
 
   const {
     register,
@@ -98,7 +99,7 @@ export default function LoginPage() {
         <div className="flex items-center justify-center gap-4 mt-4">
           <p className="text-black/70 font-poppins">{t("auth.login.noAccount")}</p>
           <Link
-            to={`/signup${redirect !== "/" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`}
+            to={withRedirect("/signup", redirect)}
             className="font-medium font-poppins text-black border-b border-black/50 hover:border-black transition-all pb-1"
           >
             {t("auth.login.signup")}

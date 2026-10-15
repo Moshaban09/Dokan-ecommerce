@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import qrCodeImg from "@/assets/Qrcode 1.png";
 import googlePlayImg from "@/assets/google-play-.png";
 import appStoreImg from "@/assets/appstore.png";
+import { env } from "@/lib/env";
 
 export const Footer = () => {
   const { t } = useTranslation();
@@ -38,8 +39,19 @@ export const Footer = () => {
           <h3 className="text-xl font-medium font-poppins">{t("footer.support")}</h3>
           <ul className="space-y-4 text-sm font-normal font-poppins text-zinc-400">
             <li className="leading-relaxed">{t("footer.address")}</li>
-            <li className="hover:text-white transition-colors cursor-pointer">support@dokan.com</li>
-            <li className="hover:text-white transition-colors cursor-pointer">+88015-88888-9999</li>
+            <li>
+              <a href={`mailto:${env.supportEmail}`} className="hover:text-white transition-colors">
+                {env.supportEmail}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`tel:${env.supportPhone.replace(/[\s-]/g, "")}`}
+                className="hover:text-white transition-colors"
+              >
+                {env.supportPhone}
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -47,15 +59,15 @@ export const Footer = () => {
           <h3 className="text-xl font-medium font-poppins">{t("footer.account")}</h3>
           <ul className="space-y-4 text-sm font-normal font-poppins">
             {[
-              { key: "myAccount", label: t("footer.myAccount") },
-              { key: "loginRegister", label: t("footer.loginRegister") },
-              { key: "cart", label: t("footer.cart") },
-              { key: "wishlist", label: t("footer.wishlist") },
-              { key: "shop", label: t("footer.shop") },
+              { key: "myAccount", label: t("footer.myAccount"), to: "/account" },
+              { key: "loginRegister", label: t("footer.loginRegister"), to: "/login" },
+              { key: "cart", label: t("footer.cart"), to: "/cart" },
+              { key: "wishlist", label: t("footer.wishlist"), to: "/wishlist" },
+              { key: "shop", label: t("footer.shop"), to: "/products" },
             ].map((item) => (
               <li key={item.key}>
                 <Link
-                  to="#"
+                  to={item.to}
                   className="text-zinc-400 hover:text-white transition-colors"
                 >
                   {item.label}
@@ -69,14 +81,11 @@ export const Footer = () => {
           <h3 className="text-xl font-medium font-poppins">{t("footer.quickLink")}</h3>
           <ul className="space-y-4 text-sm font-normal font-poppins">
             {[
-              { key: "privacyPolicy", label: t("footer.privacyPolicy") },
-              { key: "termsOfUse", label: t("footer.termsOfUse") },
-              { key: "faq", label: t("footer.faq") },
-              { key: "contact", label: t("footer.contact") },
+              { key: "contact", label: t("footer.contact"), to: "/contact" },
             ].map((item) => (
               <li key={item.key}>
                 <Link
-                  to="#"
+                  to={item.to}
                   className="text-zinc-400 hover:text-white transition-colors"
                 >
                   {item.label}
@@ -97,12 +106,12 @@ export const Footer = () => {
                 <img src={qrCodeImg} alt="QR Code" className="w-full h-full object-contain invert grayscale" />
               </div>
               <div className="flex flex-col gap-2 justify-between">
-                <a href="#" className="hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                <div>
                   <img src={googlePlayImg} alt="Google Play" className="h-9 w-[110px] object-contain" />
-                </a>
-                <a href="#" className="hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                </div>
+                <div>
                   <img src={appStoreImg} alt="App Store" className="h-9 w-[110px] object-contain" />
-                </a>
+                </div>
               </div>
             </div>
           </div>

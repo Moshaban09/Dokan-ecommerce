@@ -1,9 +1,8 @@
 import axios from 'axios';
-
-const API_BASE_URL = 'https://dummyjson.com';
+import { env } from './env';
 
 export const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: env.apiBaseUrl,
   headers: {
     'Content-Type': 'application/json',
   },

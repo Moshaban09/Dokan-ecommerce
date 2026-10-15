@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const onSubmit = async (_data: ForgotPasswordFormValues) => {
+  const onSubmit = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
     toast.success(t("auth.forgotPassword.success"));
   };

@@ -9,6 +9,7 @@ import { useCartProducts } from "../hooks/use-cart-products";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { useAuth } from "@/features/auth";
+import { applyDiscount } from "@/lib/env";
 
 export default function CartPage() {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ export default function CartPage() {
   } = useCart();
   const { products, isLoading, subtotal } = useCartProducts();
   const navigate = useNavigate();
+  const { discount, total } = applyDiscount(subtotal);
 
   return (
     <div className="container mx-auto px-4 py-20 font-poppins">
@@ -267,7 +269,7 @@ export default function CartPage() {
                   <div className="flex justify-between border-b border-black/30 dark:border-white/30 pb-4 text-primary">
                     <span className="font-normal">{t("cart.total.discount")}</span>
                     <span className="font-normal">
-                      -{t("common.currency")}{(subtotal * 0.1).toFixed(2)}
+                      -{t("common.currency")}{discount.toFixed(2)}
                     </span>
                   </div>
                 )}
@@ -281,7 +283,7 @@ export default function CartPage() {
                   <span className="font-normal">{t("cart.total.total")}</span>
                   <span className="font-normal">
                     {t("common.currency")}
-                    {(isCouponApplied ? subtotal * 0.9 : subtotal).toFixed(2)}
+                    {(isCouponApplied ? total : subtotal).toFixed(2)}
                   </span>
                 </div>
 

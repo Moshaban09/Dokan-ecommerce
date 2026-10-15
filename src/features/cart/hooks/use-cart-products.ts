@@ -22,6 +22,8 @@ export const useCartProducts = () => {
 
   useEffect(() => {
     if (itemIds.length === 0) {
+      // Intentional: reset when the cart empties.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setProducts([]);
       setIsLoading(false);
       return;

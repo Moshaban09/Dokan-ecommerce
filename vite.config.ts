@@ -17,8 +17,9 @@ export default defineConfig({
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
             if (id.includes('@supabase')) return 'supabase';
-            if (id.includes('lucide-react') || id.includes('clsx') || id.includes('tailwind-merge') || id.includes('date-fns')) return 'ui';
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) return 'vendor';
+            if (id.includes('lucide-react') || id.includes('clsx') || id.includes('tailwind-merge')) return 'ui';
+            // Match exact package directories only (avoids catching e.g. react-hook-form or react-i18next)
+            if (/[\\/]node_modules[\\/](react|react-dom|react-router)[\\/]/.test(id)) return 'vendor';
             return 'vendor';
           }
         }

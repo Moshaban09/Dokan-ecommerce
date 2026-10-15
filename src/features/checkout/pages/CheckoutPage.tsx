@@ -5,6 +5,7 @@ import { useAuth } from "@/features/auth";
 import { CouponSection, useCart } from "@/features/cart";
 import { useCartProducts } from "@/features/cart/hooks/use-cart-products";
 import { useDocumentTitle } from "@/hooks/use-document-title";
+import { env, applyDiscount } from "@/lib/env";
 import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -114,7 +115,7 @@ export default function CheckoutPage() {
   } = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
-      email: savedInfo?.email ?? user?.email ?? "",
+      email: user?.email ?? "",
       firstName: savedInfo?.firstName ?? "",
       companyName: savedInfo?.companyName ?? "",
       streetAddress: savedInfo?.streetAddress ?? "",
@@ -124,7 +125,7 @@ export default function CheckoutPage() {
     },
   });
 
-  const discount = isCouponApplied ? subtotal * 0.1 : 0;
+  const discount = isCouponApplied ? applyDiscount(subtotal).discount : 0;
   const totalAmount = subtotal - discount;
 
   useEffect(() => {
@@ -139,16 +140,27 @@ export default function CheckoutPage() {
     try {
       if (saveInfo) {
         localStorage.setItem("checkout_save_info", "true");
-        localStorage.setItem("checkout_saved_info", JSON.stringify(data));
+        // Email is not persisted: it is always available from the auth user.
+        localStorage.setItem(
+          "checkout_saved_info",
+          JSON.stringify({
+            firstName: data.firstName,
+            companyName: data.companyName,
+            streetAddress: data.streetAddress,
+            apartment: data.apartment,
+            city: data.city,
+            phoneNumber: data.phoneNumber,
+          }),
+        );
       } else {
         localStorage.removeItem("checkout_save_info");
         localStorage.removeItem("checkout_saved_info");
       }
 
       toast.loading(t("checkout.verifyingPayment"), { id: "payment" });
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, env.paymentDelayMs));
       toast.loading(t("checkout.processingSecurely"), { id: "payment" });
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, env.paymentDelayMs));
 
       const orderNumber = generateOrderNumber();
 
@@ -210,9 +222,7 @@ export default function CheckoutPage() {
       navigate("/order-success");
     } catch (error: unknown) {
       console.error("Checkout error:", error);
-      const msg =
-        error instanceof Error ? error.message : t("checkout.failedOrder");
-      toast.error(msg, { id: "payment" });
+      toast.error(t("checkout.failedOrder"), { id: "payment" });
     }
   };
 
