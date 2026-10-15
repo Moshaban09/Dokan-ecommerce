@@ -3,7 +3,7 @@ import { ProductService } from "../api/product-service";
 import type { Product, CategoryItem } from "../types";
 import { ProductCard, ProductCardSkeleton } from "../components/ProductCard";
 import { ProductFilters } from "../components/ProductFilters";
-import { DEFAULT_PRODUCT_FILTERS, filterAndSortProducts, type ProductFilterState } from "../utils/filter-products";
+import { DEFAULT_PRODUCT_FILTERS, filterAndSortProducts, hasActiveProductFilters, type ProductFilterState } from "../utils/filter-products";
 import { SectionLabel } from "@/components/common/SectionLabel";
 import { cn } from "@/lib/utils";
 import { useDocumentTitle } from "@/hooks/use-document-title";
@@ -15,54 +15,53 @@ import { env } from "@/lib/env";
 
 const PAGE_SIZE = env.productsPageSize;
 
+let allProductsCache: Product[] | null = null;
+
 export default function ProductsPage() {
   const { t } = useTranslation();
   useDocumentTitle(t("products.allProducts"));
-  const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>(allProductsCache ?? []);
   const [categories, setCategories] = useState<CategoryItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [isProductsLoading, setIsProductsLoading] = useState(true);
+  const [isProductsLoading, setIsProductsLoading] = useState(!allProductsCache);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalProducts, setTotalProducts] = useState(0);
   const [filters, setFilters] = useState<ProductFilterState>(DEFAULT_PRODUCT_FILTERS);
-  const visibleProducts = useMemo(() => filterAndSortProducts(products, filters), [products, filters]);
 
-  const totalPages = Math.max(1, Math.ceil(totalProducts / PAGE_SIZE));
+  // Sorting and filtering run over the whole catalog, then the result is paginated,
+  // so the order stays correct across pages.
+  const matchingProducts = useMemo(() => {
+    const inCategory = selectedCategory
+      ? allProducts.filter((p) => p.category === selectedCategory)
+      : allProducts;
+    return filterAndSortProducts(inCategory, filters);
+  }, [allProducts, selectedCategory, filters]);
+
+  const totalPages = Math.max(1, Math.ceil(matchingProducts.length / PAGE_SIZE));
+  const visibleProducts = useMemo(
+    () => matchingProducts.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
+    [matchingProducts, currentPage],
+  );
 
   const getTranslatedCategory = (slug: string) => {
     const key = CATEGORY_TRANSLATION_MAP[slug];
     return key ? t(key) : slug.replace(/-/g, " ");
   };
 
-  const fetchProducts = async (category: string | null, page: number) => {
-    setIsProductsLoading(true);
-    const skip = (page - 1) * PAGE_SIZE;
-    try {
-      const response = category
-        ? await ProductService.getProductsByCategory(category, { limit: PAGE_SIZE, skip })
-        : await ProductService.getProducts({ limit: PAGE_SIZE, skip });
-
-      setProducts(response.products ?? []);
-      setTotalProducts(response.total ?? 0);
-    } catch (error) {
-      console.error("Failed to fetch products:", error);
-    } finally {
-      setIsProductsLoading(false);
-    }
-  };
-
-  // Initial load: fetch products + categories simultaneously
+  // Initial load: fetch the full catalog + categories simultaneously
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     const init = async () => {
-      setIsProductsLoading(true);
       try {
         const [productsRes, categoriesRes] = await Promise.all([
-          ProductService.getProducts({ limit: PAGE_SIZE, skip: 0 }),
+          allProductsCache
+            ? Promise.resolve(null)
+            : ProductService.getProducts({ limit: 0 }),
           ProductService.getCategories(),
         ]);
-        setProducts(productsRes.products ?? []);
-        setTotalProducts(productsRes.total ?? 0);
+        if (productsRes) {
+          allProductsCache = productsRes.products ?? [];
+          setAllProducts(allProductsCache);
+        }
         setCategories(categoriesRes);
       } catch (error) {
         console.error("Failed to fetch initial data:", error);
@@ -76,13 +75,16 @@ export default function ProductsPage() {
   const handleCategoryClick = (slug: string | null) => {
     setSelectedCategory(slug);
     setCurrentPage(1);
-    fetchProducts(slug, 1);
+  };
+
+  const handleFiltersChange = (next: ProductFilterState) => {
+    setFilters(next);
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;
     setCurrentPage(page);
-    fetchProducts(selectedCategory, page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -166,11 +168,8 @@ export default function ProductsPage() {
         <div className="flex-1 flex flex-col gap-8">
           <SectionLabel text={selectedCategory ? `${t("products.category.title")}: ${getTranslatedCategory(selectedCategory)}` : t("home.explore.label")} />
 
-          {!isProductsLoading && products.length > 0 && (
-            <div className="flex flex-col gap-2">
-              <ProductFilters value={filters} onChange={setFilters} />
-              <p className="text-xs text-black/40">{t("products.filters.pageNote")}</p>
-            </div>
+          {!isProductsLoading && allProducts.length > 0 && (
+            <ProductFilters value={filters} onChange={handleFiltersChange} />
           )}
 
           <div className="mt-2">
@@ -180,11 +179,11 @@ export default function ProductsPage() {
                   <ProductCardSkeleton key={i} />
                 ))}
               </div>
-            ) : products.length === 0 ? (
+            ) : matchingProducts.length === 0 && !hasActiveProductFilters(filters) ? (
               <div className="py-20 text-center text-black/50 text-lg font-poppins">
                 {t("products.errors.noProductsInCategory")}
               </div>
-            ) : visibleProducts.length === 0 ? (
+            ) : matchingProducts.length === 0 ? (
               <div className="py-20 text-center text-black/50 text-lg font-poppins">
                 {t("products.filters.noResults")}
               </div>
@@ -242,12 +241,12 @@ export default function ProductsPage() {
           )}
 
           {/* Total count info */}
-          {!isProductsLoading && totalProducts > 0 && (
+          {!isProductsLoading && matchingProducts.length > 0 && (
             <p className="text-center text-sm text-black/40">
               {t("products.pagination.showing", {
                 from: (currentPage - 1) * PAGE_SIZE + 1,
-                to: Math.min(currentPage * PAGE_SIZE, totalProducts),
-                total: totalProducts,
+                to: Math.min(currentPage * PAGE_SIZE, matchingProducts.length),
+                total: matchingProducts.length,
               })}
             </p>
           )}
