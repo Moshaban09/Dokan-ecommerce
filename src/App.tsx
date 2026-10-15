@@ -50,7 +50,6 @@ const router = createBrowserRouter([
           { path: 'orders', element: <OrdersPage /> },
           { path: 'cancellations', element: <CancellationsPage /> },
           { path: 'reviews', element: <ReviewsPage /> },
-          { path: 'wishlist', element: <WishlistPage /> },
         ],
       },
       {
@@ -60,6 +59,10 @@ const router = createBrowserRouter([
           { path: 'login', element: <LoginPage /> },
           { path: 'forgot-password', element: <ForgotPasswordPage /> },
         ],
+      },
+      {
+        path: 'wishlist',
+        element: <WishlistPage />
       },
       {
         path: 'contact',

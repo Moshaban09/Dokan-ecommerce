@@ -7,7 +7,6 @@ import { Heart, LogOut, Menu, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import { toast } from "sonner";
 import { NavLinks } from "./navbar/NavLinks";
 import { SearchBar } from "./navbar/SearchBar";
 import { TopHeader } from "./navbar/TopHeader";
@@ -26,13 +25,6 @@ export const Navbar = () => {
     logout();
     navigate("/");
     setMobileOpen(false);
-  };
-
-  const handleWishlistClick = (e: React.MouseEvent) => {
-    if (!isAuthenticated) {
-      e.preventDefault();
-      toast.error(t("nav.loginRequired"), { id: "wishlist-auth" });
-    }
   };
 
   return (
@@ -65,7 +57,6 @@ export const Navbar = () => {
               <LanguageSelector />
               <Link
                 to="/wishlist"
-                onClick={handleWishlistClick}
                 className="relative p-1.5 md:p-2.5 hover:bg-gray-100 rounded-full transition-colors cursor-pointer flex items-center justify-center"
                 aria-label={t("nav.wishlist")}
               >
